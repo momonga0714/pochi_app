@@ -1,0 +1,215 @@
+.footer {
+  padding: 20px 0;
+  color: #fff;
+  background-color: #272727;
+  text-align: center;
+  
+  width: 100vw;
+  &__contents {
+    max-width: 840px;
+    margin: 0 auto;
+    display: flex;
+    &__content {
+      display: flex;
+      flex-direction: column;
+      width: calc(1 / 3 * 100%);
+      margin-right: 2%;
+      font-size: 12px;
+      line-height: 32px;
+      &__name {
+        font-size: 16px;
+      }
+      .kaisya {
+        color:white;
+        text-decoration: none;
+      }
+      .privacy {
+        color: white;
+        text-decoration: none;
+      }
+      .kiyaku {
+        color: white;
+        text-decoration: none;
+      }
+      .tokuyaku {
+        color: white;
+        text-decoration: none;
+      }
+      .category {
+        color: white;
+        text-decoration: none;
+      }
+      .bland {
+        color: white;
+        text-decoration: none;
+      }
+      .guide {
+        color: white;
+        text-decoration: none;
+      }
+      .guideline {
+        color: white;
+        text-decoration: none;
+      }
+      .info {
+        color: white;
+        text-decoration: none;
+      }
+      &__head {
+        margin: 0 0 20px;
+        font-size: 16px;
+        font-weight: bold;
+        content li a {
+        color: white;
+        text-decoration: none;
+        font-size: 12px;
+        line-height: 32px;
+        }
+      }
+    }
+  }
+  .footer__logo {
+    max-width: 160px;
+    width: 100%;
+    margin: 0 auto;
+    margin-top: 10px;
+  }
+  .copyright {
+    margin-top: 10px;
+    font-size: 10px;
+  }
+}
+
+.exhibition-btn {
+  position: fixed;
+  background-color: #ff9933;
+  text-align: center;
+  border-radius: 4%;
+  bottom: 32px;
+  right: 32px;
+  padding: 10px;
+  width: 150px;
+  height: 110px;
+  font-weight: bold;
+  font-size: 20px;
+  a {
+    color: #fff;
+    width: 100%;
+    display: block;
+    text-decoration: none;
+    &__text {
+      width: 100%;
+      display: block;
+      font-size: 18px;
+      text-decoration: none;
+      margin-bottom: 10px;
+      padding: 0 10px;
+    }
+    &__image {
+      width: 100%;
+      &__icon {
+        font-size: 40px;
+      }
+    }
+  }
+}
+
+@media (max-width: 1040px) {
+  .footer {
+    padding: 30px 0;
+    &__contents {
+      display: flex;
+      justify-content: space-between;
+      &__content {
+        background-color: #fff;
+        color: #272727;
+        &__name {
+          font-size: 18px;
+        }
+        .kaisya {
+          display: none;
+        }
+        .privacy {
+          display: none;
+        }
+        .kiyaku {
+          display: none;
+        }
+        .tokuyaku {
+          display: none;
+        }
+        .category {
+          display: none;
+        }
+        .bland {
+          display: none;
+        }
+        .guide {
+          display: none;
+        }
+        .guideline {
+          display: none;
+        }
+        .info {
+          display: none;
+        }
+        
+      }
+    }
+    .footer__logo {
+      max-width: 120px;
+      margin-top: 20px;
+    }
+    .copyright {
+      margin-top: 10px;
+      font-size: 5px;
+    }
+  }
+}
+
+@media (max-width: 670px) {
+  .footer {
+    padding: 30px 0;
+    &__contents {
+      font-size: 20px;
+      flex-direction: column;
+      margin-bottom: 10px;
+      &__content {
+        margin-bottom: 10px;
+        width: 100%;
+        display: block;
+        &__name {
+          font-size: 18px;
+        }
+        .kaisya {
+          display: none;
+        }
+        .privacy {
+          display: none;
+        }
+        .kiyaku {
+          display: none;
+        }
+        .tokuyaku {
+          display: none;
+        }
+        .category {
+          display: none;
+        }
+        .bland {
+          display: none;
+        }
+        .guide {
+          display: none;
+        }
+        .guideline {
+          display: none;
+        }
+        .info {
+          display: none;
+        }
+      }
+    }
+    
+  }
+}

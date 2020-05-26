@@ -1,0 +1,323 @@
+
+h1{
+  a{
+    text-decoration: none;
+    color: brown;
+  }
+}
+
+.main{
+  .show {
+    padding: 40px;
+    margin: 0 auto;
+    &__contents {
+      width: 700px;
+      margin: 0 auto;
+      &__content {
+        .Box {
+          background-color: #fff;
+          padding: 24px 40px;
+          &__name {
+            text-align: center;
+            font-weight: bold;
+            margin-bottom: 16px;
+            font-size: 40px;
+            letter-spacing: -0.8px;
+            color: #7d940a;
+          }
+          &__image {
+            ul {
+              position: relative;
+              list-style: none;
+              margin: 0 5%;
+              .Image {
+                display: flex;
+                flex-direction: column;
+                width: 560px;
+                align-items: center;
+              }
+              .Image img {
+                object-fit: cover;
+                height: 346px;
+                width: 100%;
+                vertical-align: bottom;
+                margin: 0 auto;
+              }
+              ul {
+                display: flex;
+                justify-content: center;
+                margin-top: 10px;
+                list-style: none;
+                li {
+                  width: 25%;
+                  margin-right: 10px;
+                  display: flex;
+                  align-items: center;
+                }
+                li img {
+                  object-fit: cover;
+                  height: 100px;
+                  width: 100%;
+                  vertical-align: bottom;
+                }
+              }
+            }
+          }
+          &__price {
+            margin: 24px 0 24px;
+            text-align: center;
+            .totalPrice {
+              text-align: center;
+              font-size: 46px;
+              font-weight: bold;
+              margin: 0 10px 0 0;
+              &__detail {
+                font-size: 16px;
+              }
+            }
+          }
+          a {
+            display: inline-block;
+            text-decoration: none;
+            color: #fff;
+          }
+          .userBtn {
+            width: 100%;
+            line-height: 40px;
+            text-align: center;
+            background-color: #3CCACE;
+            margin-bottom: 10px;
+          }
+          .userBtn {
+            width: 100%;
+            line-height: 40px;
+            text-align: center;
+            background-color: #ffb340;
+            margin-bottom: 10px;
+          }
+          .soldOutBtn {
+            width: 100%;
+            line-height: 40px;
+            text-align: center;
+            background-color: #ffb340;
+            margin-bottom: 10px;
+          }
+          &__introduction {
+            line-height: 1.5;
+            font-size: 18px;
+            margin: 30px 0;
+          }
+          .table {
+            margin-bottom: 20px;
+            &__details {
+              width: 100%;
+              height: 375px;
+              border-collapse: collapse;
+              border: 1px solid #f8f8f8;
+              tr {
+                th {
+                  width: 20%;
+                  background-color: #eee;
+                  font-weight: 400;
+                  padding: 8px;
+                  border: 1px solid #dedede;
+                  font-size: 14px;
+                  text-align: center;
+                }
+                td {
+                  width: 61%;
+                  padding: 15px 15px;
+                  border: 1px solid #dedede;
+                  font-size: 14px;
+                  a {
+                    text-decoration: none;
+                    color: #3CCACE;
+                  }
+                }
+              }
+            }
+          }
+          .optionalArea {
+            display: flex;
+            justify-content: space-between;
+            &__btn {
+              display: flex;
+              justify-content: space-between;
+              list-style: none;
+              .likeBtn {
+                margin-right: auto;
+                padding: 6px 10px;
+                border-radius: 40px;
+                color: #ff9933;
+                border: 1px solid #ffb340;
+              }
+              a {
+                padding: 6px 10px;
+                display: inline-block;
+                border-radius: 4px;
+                color: #333;
+                border: 1px solid #333;
+                text-decoration: none;
+              }
+              .reportBtn {
+                font-size: 14px;
+              }
+            }
+          }
+        }
+        .userSelect {
+          width: 100%;
+          margin: 20px 0;
+          background-color: #fff;
+          padding: 15px 40px;
+          a {
+            display: inline-block;
+            text-decoration: none;
+            color: #fff;
+          }
+          .user__edit {
+            width: 100%;
+            line-height: 40px;
+            text-align: center;
+            background-color: brown;
+          }
+          p {
+            line-height: 40px;
+            text-align: center;
+            color: rgb(71, 71, 71);
+          }
+          .user__delete {
+            width: 100%;
+            line-height: 40px;
+            text-align: center;
+            background-color: #ffb340;
+          }
+        }
+        .commentBox {
+          padding: 0 40px 25px 40px;
+          background-color: #fff;
+          margin: 10px 0;
+          text-align: center;
+          .comment__user {
+            color: black;
+            text-align: left;
+            padding-bottom: 7px;
+          }
+          .comment__massage__text {
+            text-align: left;
+            padding: 15px 10px;
+            line-height: 30px;
+            background-color: #eef0f4;
+            margin-bottom: 10px;
+            color: black;
+            border-radius: 7px;
+            overflow-wrap: break-word;
+            p {
+              font-size: 12px;
+              text-align: right;
+              color: #aaa;
+            }
+          }
+          .comment__delete {
+            width: 55px;
+            line-height: 30px;
+            padding: 0px 10px;
+            margin: 0px 565px 10px;
+            box-shadow: 0 3px 6px rgba(0, 0, 0, 0.25);
+            border-radius: 7px;
+            background-color: #ffb340;
+            a {
+              text-decoration: none;
+              color: white;
+            }
+          }
+          .commentContents {
+            textarea {
+              width: 100%;
+              min-height: 104px;
+              padding: 10px;
+            }
+            .noticeMessage {
+              padding: 8px;
+              font-size: 14px;
+              background-color: #f8f8f8;
+              margin: 10px 0 30px 0;
+              text-align: left;
+            }
+            .commentBtn {
+              line-height: 48px;
+              background: #ff9933;
+              border: 1px solid #ff9933;
+              color: #fff;
+              width: 60%;
+              font-size: 18px;
+              border-radius: 100px;
+              display: inline-block;
+              text-align: center;
+              align-items: flex-start;
+              cursor: default;
+              padding: 1px 7px 2px;
+            }
+          }
+        }
+        .links {
+          list-style: none;
+          display: flex;
+          justify-content: space-between;
+          a {
+            text-decoration: none;
+            color: #ff9933;
+          }
+        }
+        .relateds {
+          a {
+            display: block;
+            margin: 24px 0 8px;
+            color: #ff9933;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 22px;
+            position: relative;
+          }
+        }
+      }
+    }
+  }
+}
+
+.resipi-index{
+  border-bottom: 1px solid #E5E5E5;
+    overflow: hidden;
+    padding: 1px 5px;
+    zoom: 1;
+}
+
+ #ingredients_list {
+   color: #4C4C4C; 
+  
+  }
+
+ #ingredients_list .ingredient_row {
+   border-bottom: 1px solid #E5E5E5;
+   overflow: hidden;
+   padding: 1px 5px;
+   zoom: 1;
+  }
+
+ #ingredients_list .ingredient_name {
+    display: inline;
+      font-size: 108%; 
+    }
+
+ #ingredients_list .ingredient_quantity { 
+   display: inline; 
+   float: right; 
+   margin: 0 0 0 10px; 
+   text-align: right; 
+  }
+
+ #ingredients_list .ingredient_category { 
+   display: inline; 
+    font-weight: 600;
+     padding-top: 12px;
+     }

@@ -1,0 +1,50 @@
+.wrapper
+  %h1.app-title Pochi
+  .exhibit
+    .exhibit__resipi
+      .exhibit__resipi__resipiProfile
+        .exhibit__resipi__resipiProfile__inputForm
+        = form_with( model: @sub, url: sub_path, local: true) do |f|
+          = render 'layouts/error_messages', model: f.object
+          .exhibit__resipi__resipiProfile__inputForm__resipiImage
+            .exhibit__resipi__resipiProfile__inputForm__resipiImage__upload
+              .exhibit__resipi__resipiProfile__inputForm__resipiImage__upload__head
+                .notation 料理画像
+                .formRequire 必須
+              .exhibit__resipi__resipiProfile__inputForm__resipiImage__upload__attention
+                最大5枚までアップロードできます
+              .exhibit__resipi__resipiProfile__inputForm__resipiImage__upload__box
+                - if @sub.persisted?
+                  .prev-content
+                    - @sub.resipi_images.each_with_index do |image, i|
+                      .preview-box-sub
+                        .upper-box
+                          = image_tag image.image.url, data: { index: i }, width: "112", height: '112'
+                        .lower-box
+                          -# .update-box
+                          -#   %label.edit-btn 編集
+                          .delete-box-sub
+                            %span.js-remove 削除
+                  .label-content-sub
+                    //プレビューの数に合わせてforオプションを指定
+                    = f.label :"sub-resipi_images_attributes_#{@sub.resipi_images.length}_image", class: "label-box-sub", id: "label-box-sub--#{@sub.resipi_images.length}" do
+                      %pre.label-box__text-visible クリックしてファイルをアップロード
+                      .hidden-content
+                        = f.fields_for :resipi_images do |i|
+                          //プレビューが出ている分のfile_fieldとdelete用のチェックボックスを設置
+                          .js-file_group{"data-index" => "#{i.index}"}
+                            = i.file_field :image, class: "hidden-field-sub"
+                          - if @sub.persisted?
+                            = i.check_box:_destroy, data:{ index: i.index },class: "hidden-checkbox"
+                          - if @sub.persisted?
+                            .js-file_group{"data-index" => "#{@sub.resipi_images.count}"}
+                          - @sub.resipi_images.length.upto(4) do |i|
+                            %input{name: "sub[resipi_images_attributes][#{i}][image]", id: "sub_resipi_images_attributes_#{i}_image", class:"hidden-field-sub", type:"file"}
+          = f.text_field :sub_name, class: "exhibitInput", placeholder: "副菜を入力してください"
+          = f.collection_select :genre_id, Genre.all, :id, :name, { prompt: "選択してください" }, class: "exhibitInput"
+          = f.collection_select :type_id, Type.all, :id, :name, { prompt: "選択してください" }, class: "exhibitInput"
+          .submit-area
+            = f.submit :料理を更新する ,class: "exhibitSubmit1"
+            = link_to "/", class: "exhibitSubmit2" do
+              もどる
+= render "layouts/footer"

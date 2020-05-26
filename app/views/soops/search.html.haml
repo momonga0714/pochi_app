@@ -1,0 +1,33 @@
+.wrapper
+  %h1= link_to "Pochi", root_path,class: "app-title"
+  .soop
+    .search
+      .search-container
+        .search-container__head
+          キーワード検索
+        .search-container__product-box
+          .search-container__product-box__product-head
+            = link_to "#", class: "line" do
+              = "検索結果: #{@soops.length}件"
+        .search-container__product-lists
+          .week
+            - @soops.each do |soop|
+              - if soop.user_id == current_user.id
+                .week__menu_show
+                  %td
+                    .pickup-container__product-box__product-lists__product-list
+                      = link_to soop_path(soop), data:{"turbolinks" => false}, class: "line" do
+                        - if soop.first_image != nil
+                          .content_post{:style => "background-image: url(#{soop.first_image.image.url});"}
+                        - else
+                          = ""
+                    .resipi_name
+                      = link_to "◎#{soop.soop_name}◎","/soops/#{soop.id}"
+              - else
+                = ""
+  .page
+    = paginate(@soops)
+
+  .submit_area            
+    = link_to "今週のこんだてを決める", "/",class: "exhibitSubmit1"
+  = render "layouts/footer"

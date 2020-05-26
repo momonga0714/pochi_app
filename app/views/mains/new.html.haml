@@ -1,0 +1,36 @@
+.wrapper
+  %h1.app-title Pochi
+  .exhibit
+    .exhibit__resipi
+      .exhibit__resipi__resipiProfile
+        .exhibit__resipi__resipiProfile__inputForm
+        = form_with( model: @main, url: mains_path, local: true) do |f|
+          = render 'layouts/error_messages', model: f.object
+          .exhibit__resipi__resipiProfile__inputForm__resipiImage
+            .exhibit__resipi__resipiProfile__inputForm__resipiImage__upload
+              .exhibit__resipi__resipiProfile__inputForm__resipiImage__upload__head
+                .notation 出品画像
+                .formRequire 必須
+              .exhibit__resipi__resipiProfile__inputForm__resipiImage__upload__attention
+                最大5枚までアップロードできます
+              .exhibit__resipi__resipiProfile__inputForm__resipiImage__upload__box
+                .prev-content
+                .label-content
+                  %label{for: "main_resipi_images_attributes_0_image", class: "label-box", id: "label-box--0"}
+                    %pre.label-box__text-visible クリックしてファイルをアップロード
+                .hidden-content
+                  = f.fields_for :resipi_images do |i|
+                    = i.file_field :image, class: "hidden-field"
+                    %input{class:"hidden-field", type: "file", name: "main[resipi_images_attributes][1][image]", id: "main_resipi_images_attributes_1_image" }
+                    %input{class:"hidden-field", type: "file", name: "main[resipi_images_attributes][2][image]", id: "main_resipi_images_attributes_2_image" }
+                    %input{class:"hidden-field", type: "file", name: "main[resipi_images_attributes][3][image]", id: "main_resipi_images_attributes_3_image" }
+                    %input{class:"hidden-field", type: "file", name: "main[resipi_images_attributes][4][image]", id: "main_resipi_images_attributes_4_image" }
+
+          
+          = f.text_field :main_name, class: "exhibitInput", placeholder: "主菜を入力してください"
+          = f.collection_select :genre_id, Genre.all, :id, :name, { prompt: "カテゴリーを選択してください" }, class: "exhibitInput"
+          = f.collection_select :type_id, Type.all, :id, :name, { prompt: "種類を選択してください" }, class: "exhibitInput"
+          .submit-area
+            = f.submit :料理を登録する ,class: "exhibitSubmit1"
+            = link_to "/", class: "exhibitSubmit2" do
+              もどる

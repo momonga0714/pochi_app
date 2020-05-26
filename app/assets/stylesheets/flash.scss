@@ -1,0 +1,21 @@
+$white: #fff;
+$side_blue_dark: #253141;
+$side_blue_light: #2f3e51;
+$light_orange: #ffb340;
+$light_gray: #999;
+$black: #434a54;
+$alert_red: red;
+
+.notification {
+  .notice {
+    background-color: $light_orange;
+    color: $white;
+    text-align: center;
+  }
+
+  .alert {
+    background-color: $alert_red;
+    color: $white;
+    text-align: center;
+  }
+}

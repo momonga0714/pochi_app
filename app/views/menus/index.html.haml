@@ -1,0 +1,430 @@
+.wrapper-menu
+  %h1.app-title Pochi
+  .header__box__navi__right
+    - if user_signed_in?
+      = link_to "マイページ", "/users", class:"header__box__navi__right__mypage" 
+      = link_to "ログアウト", "/users/sign_out", class:"header__box__navi__right__logout",method: :delete 
+    - else
+      =link_to "ログイン","/users/sign_in", class:"header__box__navi__right__login" 
+      =link_to "新規登録","/users/sign_up", class:"header__box__navi__right__new", data:{"turbolinks" => false}
+
+  .week
+    - if user_signed_in?
+      %h2.title 今週のメニュー
+      .week__menu
+        %table.title-class__monday{:border => "1"}
+          %tr
+            %th 月曜日
+          %tr
+            %th 主菜
+            %td
+              -if @mains.blank? != true && @mains.length >= 1
+                - main_mon = @mains[rand(@mains.length)]
+                = main_mon.main_name
+              - else
+                - main_mon.main_name = ""
+                = main_mon.main_name
+          %tr
+            %th 副菜
+            %td
+              -if @subs.blank? != true
+                - sub_mon = @subs[rand(@subs.length)]
+                - if main_mon.genre != sub_mon.genre
+                  - i = 0
+                  - while main_mon.genre != sub_mon.genre && i < 1000 do
+                    - i += 1
+                    - sub_mon = @subs[rand(@subs.length)]
+                  = sub_mon.sub_name
+                - else
+                  = sub_mon.sub_name
+              - else
+                - @subs = ""
+                = @subs
+          %tr
+            %th 汁物
+            %td
+              - if @soops.blank? != true
+                - soop_mon = @soops[rand(@soops.length)]
+                - if main_mon.genre != soop_mon.genre
+                  - i = 0
+                  - while main_mon.genre != soop_mon.genre && i < 1000 do
+                    - i += 1
+                    - soop_mon = @soops[rand(@soops.length)]
+                  = soop_mon.soop_name
+                - else
+                  = soop_mon.soop_name
+              -else
+                - @soops = ""
+                = @soops
+          %tr
+            %th ジャンル
+            %td
+              - if main_mon.blank? != true
+                = main_mon.genre.name
+              - else
+                - main_mon = ""
+                = main_mon
+        %table.title-class__Tuesday{:border => "1"}
+          %tr
+            %th 火曜日
+          %tr
+            %th 主菜
+            %td
+              -if @mains.blank? != true && @mains.length >= 2
+                - main_tues = @mains[rand(@mains.length)]
+                - if main_mon == main_tues || main_mon.genre == main_tues.genre
+                  - while main_mon == main_tues || main_mon.genre == main_tues.genre do
+                    - main_tues = @mains[rand(@mains.length)]
+                  = main_tues.main_name
+                - else
+                  = main_tues.main_name
+              - else
+                - main = ""
+                = main
+          %tr
+            %th 副菜
+            %td
+              -if @subs.blank? != true
+                - sub_tues = @subs[rand(@subs.length)]
+                - if main_tues.genre != sub_tues.genre
+                  - i = 0
+                  - while main_tues.genre != sub_tues.genre && i < 1000 do
+                    - i += 1
+                    - sub_tues = @subs[rand(@subs.length)]
+                  = sub_tues.sub_name
+                - else
+                  = sub_tues.sub_name
+              - else
+                - @subs = ""
+                = @subs
+              
+          %tr
+            %th 汁物
+            %td
+              - if @soops.blank? != true
+                - soop_tues = @soops[rand(@soops.length)]
+                - if main_tues.genre != soop_tues.genre
+                  - i = 0
+                  - while main_tues.genre != soop_tues.genre && i < 1000 do
+                    - i += 1
+                    - soop_tues = @soops[rand(@soops.length)]
+                  = soop_tues.soop_name
+                - else
+                  = soop_tues.soop_name
+              -else
+                - @soops = ""
+                = @soops
+          %tr
+            %th ジャンル
+            %td
+              - if main_tues.blank? != true
+                = main_tues.genre.name
+              - else
+                - main_tues = ""
+                = main_tues
+              
+        %table.title-class__Wednesday{:border => "1"}
+          %tr
+            %th 水曜日
+          %tr
+            %th 主菜
+            %td
+              -if @mains.blank? != true && @mains.length >= 3
+                - main_wed = @mains[rand(@mains.length)]
+                - if main_mon == main_wed || main_tues == main_wed || main_tues.genre == main_wed.genre
+                  - while main_mon == main_wed || main_tues == main_wed || main_tues.genre == main_wed.genre do
+                    - main_wed = @mains[rand(@mains.length)]
+                  = main_wed.main_name
+                - else
+                  = main_wed.main_name
+              - else
+                - main = ""
+                = main
+              
+          %tr
+            %th 副菜
+            %td
+              -if @subs.blank? != true
+                - sub_wed = @subs[rand(@subs.length)]
+                - if main_wed.genre != sub_wed.genre
+                  - i = 0
+                  - while main_wed.genre != sub_wed.genre && i < 1000 do
+                    - i += 1
+                    - sub_wed = @subs[rand(@subs.length)]
+                  = sub_wed.sub_name
+                - else
+                  = sub_wed.sub_name
+              - else
+                - @subs = ""
+                = @subs
+
+             
+          %tr
+            %th 汁物
+            %td
+              - if @soops.blank? != true
+                - soop_wed = @soops[rand(@soops.length)]
+                - if main_wed.genre != soop_wed.genre
+                  - i = 0
+                  - while main_wed.genre != soop_wed.genre && i < 1000 do
+                    - i += 1
+                    - soop_wed = @soops[rand(@soops.length)]
+                  = soop_wed.soop_name
+                - else
+                  = soop_wed.soop_name
+              -else
+                - @soops = ""
+                = @soops
+          %tr
+            %th ジャンル
+            %td
+              - if main_wed.blank? != true
+                = main_wed.genre.name
+              - else
+                - main_wed = ""
+                = main_wed
+              
+        %table.title-class__Thursday{:border => "1"}
+          %tr
+            %th 木曜日
+          %tr
+            %th 主菜
+            %td
+              -if @mains.blank? != true && @mains.length >= 4
+                - main_thu = @mains[rand(@mains.length)]
+                - if main_mon == main_thu || main_tues == main_thu || main_wed == main_thu || main_wed.genre == main_thu.genre
+                  - while main_mon == main_thu || main_tues == main_thu || main_wed == main_thu || main_wed.genre == main_thu.genre do
+                    - main_thu = @mains[rand(@mains.length)]
+                  = main_thu.main_name
+                - else
+                  = main_thu.main_name
+              - else
+                - main = ""
+                = main
+              
+          %tr
+            %th 副菜
+            %td
+              -if @subs.blank? != true
+                - sub_thu = @subs[rand(@subs.length)]
+                - if main_thu.genre != sub_thu.genre
+                  - i = 0
+                  - while main_thu.genre != sub_thu.genre && i < 1000 do
+                    - i += 1
+                    - sub_thu = @subs[rand(@subs.length)]
+                  = sub_thu.sub_name
+                - else
+                  = sub_thu.sub_name
+              - else
+                - @subs = ""
+                = @subs
+
+          %tr
+            %th 汁物
+            %td
+              - if @soops.blank? != true
+                - soop_thu = @soops[rand(@soops.length)]
+                - if main_thu.genre != soop_thu.genre
+                  - i = 0
+                  - while main_thu.genre != soop_thu.genre && i < 1000 do
+                    - i += 1
+                    - soop_thu = @soops[rand(@soops.length)]
+                  = soop_thu.soop_name
+                - else
+                  = soop_thu.soop_name
+              -else
+                - @soops = ""
+                = @soops
+          %tr
+            %th ジャンル
+            %td
+              - if main_thu.blank? != true
+                = main_thu.genre.name
+              - else
+                - main_thu = ""
+                = main_thu
+              
+        %table.title-class__Friday{:border => "1"}
+          %tr
+            %th 金曜日
+          %tr
+            %th 主菜
+            %td
+              -if @mains.blank? != true && @mains.length >=5
+                - main_fri = @mains[rand(@mains.length)]
+                - if main_mon == main_fri || main_tues == main_fri || main_wed == main_fri || main_thu == main_fri || main_thu.genre == main_fri.genre
+                  - while main_mon == main_fri || main_tues == main_fri || main_wed == main_fri || main_thu == main_fri || main_thu.genre == main_fri.genre do
+                    - main_fri = @mains[rand(@mains.length)]
+                  = main_fri.main_name
+                - else
+                  = main_fri.main_name
+              - else
+                - main = ""
+                = main
+          %tr
+            %th 副菜
+            %td
+              -if @subs.blank? != true
+                - sub_fri = @subs[rand(@subs.length)]
+                - if main_fri.genre != sub_fri.genre
+                  - i = 0
+                  - while main_fri.genre != sub_fri.genre && i < 1000 do
+                    - i += 1
+                    - sub_fri = @subs[rand(@subs.length)]
+                  = sub_fri.sub_name
+                - else
+                  = sub_fri.sub_name
+              - else
+                - @subs = ""
+                = @subs
+          %tr
+            %th 汁物
+            %td
+              - if @soops.blank? != true
+                - soop_fri = @soops[rand(@soops.length)]
+                - if main_fri.genre != soop_fri.genre
+                  - i = 0
+                  - while main_fri.genre != soop_fri.genre && i < 1000 do
+                    - i += 1
+                    - soop_fri = @soops[rand(@soops.length)]
+                  = soop_fri.soop_name
+                - else
+                  = soop_fri.soop_name
+              -else
+                - @soops = ""
+                = @soops
+          %tr
+            %th ジャンル
+            %td
+              - if main_fri.blank? != true
+                = main_fri.genre.name
+              - else
+                - main_fri = ""
+                = main_fri
+              
+        %table.title-class__Saturday{:border => "1"}
+          %tr
+            %th 土曜日
+          %tr
+            %th 主菜
+            %td
+              -if @mains.blank? != true && @mains.length >= 6
+                - main_sat = @mains[rand(@mains.length)]
+                - if main_mon == main_sat || main_tues == main_sat || main_wed == main_sat || main_thu == main_sat || main_fri == main_sat || main_fri.genre == main_sat.genre
+                  - while main_mon == main_sat || main_tues == main_sat || main_wed == main_sat || main_thu == main_sat || main_fri == main_sat || main_fri.genre == main_sat.genre do
+                    - main_sat = @mains[rand(@mains.length)]
+                  = main_sat.main_name
+                - else
+                  = main_sat.main_name
+              - else
+                - main = ""
+                = main
+          %tr
+            %th 副菜
+            %td
+              -if @subs.blank? != true
+                - sub_sat = @subs[rand(@subs.length)]
+                - if main_sat.genre != sub_sat.genre
+                  - i = 0
+                  - while main_sat.genre != sub_sat.genre && i < 1000 do
+                    - i += 1
+                    - sub_sat = @subs[rand(@subs.length)]
+                  = sub_sat.sub_name
+                - else
+                  = sub_sat.sub_name
+              - else
+                - @subs = ""
+                = @subs
+          %tr
+            %th 汁物
+            %td
+              - if @soops.blank? != true
+                - soop_sat = @soops[rand(@soops.length)]
+                - if main_sat.genre != soop_sat.genre
+                  - i = 0
+                  - while main_sat.genre != soop_sat.genre && i < 1000 do
+                    - i += 1
+                    - soop_sat = @soops[rand(@soops.length)]
+                  = soop_sat.soop_name
+                - else
+                  = soop_sat.soop_name
+              -else
+                - @soops = ""
+                = @soops
+          %tr
+            %th ジャンル
+            %td
+              - if main_sat.blank? != true
+                = main_sat.genre.name
+              - else
+                - main_sat = ""
+                = main_sat
+              
+        %table.title-class__Sunday{:border => "1"}
+          %tr
+            %th 日曜日
+          %tr
+            %th 主菜
+            %td
+              -if @mains.blank? != true && @mains.length >= 7
+                - main_sun = @mains[rand(@mains.length)]
+                - if main_mon == main_sun || main_tues == main_sun || main_wed == main_sun || main_thu == main_sun || main_fri == main_sun || main_sat == main_sun || main_sat.genre == main_sun.genre
+                  - while main_mon == main_sun || main_tues == main_sun || main_wed == main_sun || main_thu == main_sun || main_fri == main_sun || main_sat == main_sun || main_sat.genre == main_sun.genre do
+                    - main_sun = @mains[rand(@mains.length)]
+                  = main_sun.main_name
+                - else
+                  = main_sun.main_name
+              - else
+                - main = ""
+                = main
+          %tr
+            %th 副菜
+            %td
+              -if @subs.blank? != true
+                - sub_sun = @subs[rand(@subs.length)]
+                - if main_sun.genre != sub_sun.genre
+                  - i = 0
+                  - while main_sun.genre != sub_sun.genre && i < 1000 do
+                    - i += 1
+                    - sub_sun = @subs[rand(@subs.length)]
+                  = sub_sun.sub_name
+                - else
+                  = sub_sun.sub_name
+              - else
+                - @subs = ""
+                = @subs
+          %tr
+            %th 汁物
+            %td
+              - if @soops.blank? != true
+                - soop_sun = @soops[rand(@soops.length)]
+                - if main_sun.genre != soop_sun.genre
+                  - i = 0
+                  - while main_sun.genre != soop_sun.genre && i < 1000 do
+                    - i += 1
+                    - soop_sun = @soops[rand(@soops.length)]
+                  = soop_sun.soop_name
+                - else
+                  = soop_sun.soop_name
+              -else
+                - @soops = ""
+                = @soops
+          %tr
+            %th ジャンル
+            %td
+              - if main_sun.blank? != true
+                = main_sun.genre.name
+              - else
+                - main_sun = ""
+                = main_sun
+    - else
+      = image_tag "3418554_s.jpg", size: "450x300", class: "top-image"
+
+.submit_area            
+  - if user_signed_in?
+    = link_to "得意料理から今週のこんだてを決める", "/",class: "exhibitSubmit1"
+    = link_to "登録した料理を確認する", "/menus/menu_index",class: "exhibitSubmit3"
+  - else
+    = link_to "今週のこんだてを決める", "/users/sign_in",class: "exhibitSubmit1"
+
+= render "layouts/footer"

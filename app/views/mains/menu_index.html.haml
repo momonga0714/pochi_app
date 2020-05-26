@@ -1,0 +1,31 @@
+.wrapper
+  %h1= link_to "Pochi", root_path,class: "app-title"
+  .header__box__upper__search
+    = form_with(url: search_mains_path, local: true, method: :get, class: "search-form") do |form|
+      = form.text_field :keyword, placeholder: "キーワードから探す", class: "header__box__upper__search--input"
+      %button{type: "submit", class: 'header__box__upper__search--btn'} 
+        = icon('fas', 'search', class: 'search-icon')
+  .week
+    %h2.title 登録メニュー
+    - @mains.each do |main|
+      - if main.user_id == current_user.id
+        .week__menu_show
+          %td
+            .pickup-container__product-box__product-lists__product-list
+              = link_to main_path(main), data:{"turbolinks" => false}, class: "line" do
+                - if main.first_image != nil
+                  .content_post{:style => "background-image: url(#{main.first_image.image.url});"}
+                - else
+                  = ""
+            .resipi_name
+              = link_to "◎#{main.main_name}◎","/mains/#{main.id}"
+      - else
+        = ""
+  .page
+    = paginate(@mains)
+
+  .submit_area            
+    = link_to "今週のこんだてを決める", "/",class: "exhibitSubmit1"
+  = render "layouts/footer"
+
+

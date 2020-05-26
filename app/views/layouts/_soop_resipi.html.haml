@@ -1,0 +1,152 @@
+.wrapper
+  .main
+    %h1= link_to "Pochi", root_path,class: "app-title"
+    .show
+      .show__contents
+        .show__contents__content
+          .Box
+            .Box__name
+              %h2= @soop.soop_name
+            .Box__image
+              %ul
+                %li.top-image
+                -if @soop_images.blank?
+                  = ""
+                - else
+                  = image_tag @soop_images[0].image.url ,class:"soopImage"
+                    - if @soop.user_id.present?
+                %ul
+                  - @soop_images.each do |image|
+                    %li= image_tag image.image.url
+            - if user_signed_in?
+              - if @soop.user_id == current_user.id
+                = link_to "root_path", class:"userBtn" do
+                  %h2 自分のレシピです
+              - elsif @soop.user_id == nil
+                = link_to "root_path", class:"userBtn" do
+                  %h2 フレンドが登録したレシピです
+              - else
+                = link_to root_path, class:"soldOutBtn" do
+                  %h2 今注目のレシピです
+            - else
+              = link_to new_user_session_path, class:"userBtn" do
+                %h2 ログインして登録
+              = link_to new_user_registration_path, class:"userBtn" do
+                %h2 新規会員登録して登録
+            .Box__introduction
+              = @soop.comment
+            .table
+              %table.table__details
+                %tr
+                  %th 登録者
+                  %td= @soop.user.nickname
+                %tr
+                  %th 料理のカテゴリー
+                  %td
+                    = @soop.genre.name 
+                -if @soop.type_id.present?
+                  %tr
+                    %th 料理の種類
+                    %td= @soop.type.name
+                - else
+                  %tr
+                    %th 料理の種類
+                    %td
+                %tr
+                  %th レシピ
+                  %td.resipi-index
+                    #ingredients_list
+                      .ingredient_row
+                        .ingredient_name
+                          %span.name 薄力粉
+                        .ingredient_quantity.amount 180g
+                      .ingredient_row
+                        .ingredient_name
+                          %span.name
+                            %a.cookdict_ingredient_link{:href => "/cooking_basics/search/%E5%BC%B7%E5%8A%9B%E7%B2%89"} 強力粉
+                        .ingredient_quantity.amount 180g
+                      .ingredient_row
+                        .ingredient_name
+                          %span.name 砂糖
+                        .ingredient_quantity.amount 50g
+                      .ingredient_row
+                        .ingredient_name
+                          %span.name 塩
+                        .ingredient_quantity.amount 4g
+                      .ingredient_row
+                        .ingredient_name
+                          %span.name 溶かしバター
+                        .ingredient_quantity.amount 150g
+                      .ingredient_row
+                        .ingredient_name
+                          %span.name 溶き卵
+                        .ingredient_quantity.amount 2個
+                      .ingredient_row
+                        .ingredient_name
+                          %span.name 牛乳
+                        .ingredient_quantity.amount 80g
+                      .ingredient_row
+                        .ingredient_name
+                          %span.name
+                            %a.cookdict_ingredient_link{:href => "/cooking_basics/search/%E3%83%8F%E3%83%81%E3%83%9F%E3%83%84"} ハチミツ
+                        .ingredient_quantity.amount 20g
+                      .ingredient_row
+                        .ingredient_name
+                          %span.name ⚫ざらめ
+                        .ingredient_quantity.amount 50g
+                      .ingredient_row
+                        .ingredient_name
+                          %span.name ⚫ドライイースト
+                        .ingredient_quantity.amount 小さじ1
+            .optionalArea
+              %ul.optionalArea__btn
+                %li.likeBtn 
+                  = icon('fa', 'star')
+                  お気に入り 0
+              %ul.optionalArea__btn
+                =link_to "#" do
+                  %li.reportBtn
+                    = icon('fa', 'flag')
+                    不適切なレシピの通報
+          - if @soop.user_id != nil && current_user.id == @soop.user_id
+            .userSelect
+              = link_to 'この料理を削除する', soop_path(@soop.id), method: :delete, data: { confirm: "本当に削除しますか？" }, class: 'user__delete'
+              = link_to '商品の編集', edit_soop_path(@soop.id), data:{"turbolinks" => false}, class: 'user__edit'
+          - else
+            .commentBox
+              .comments
+                - if @comments
+                  - @comments.each do |comment|
+                    .comments__text__user
+                      %strong
+                        .comment__user
+                          %p= comment.user.nickname
+                        .comment__massage__text
+                          = comment.text
+                          %p= comment.created_at.strftime("%Y年%m月%d日 %H時%M分")
+                        - if user_signed_in? && current_user.id == comment.user_id
+                          .comment__delete
+                            = link_to '削除', "/soops/#{@soop.id}/comments/#{comment.id}", method: :delete
+
+            .commentContents
+              - if user_signed_in?
+                = form_with(model: [@soop], local:true, id: "new_comment") do |f|
+                  = f.text_area :text, class: 'textarea', rows: "2"
+                  .noticeMessage
+                    相手のことを考え丁寧なコメントを心がけましょう。
+                    %br
+                    不快な言葉遣いなどは利用制限や退会処分となることがあります。
+                  = f.submit "コメントする", class: "commentBtn"
+          %ul.links
+            =link_to "#" do
+              %li
+                = icon('fa', 'angle-left')
+                %span 前の商品
+            =link_to "#" do
+              %li
+                %span 後ろの商品
+                = icon('fa', 'angle-right')
+          .relateds
+            =link_to "#" do
+              ベビー・キッズをもっと見る
+

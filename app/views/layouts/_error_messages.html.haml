@@ -1,0 +1,18 @@
+- if @main != nil
+  -if @main.errors.any?
+    .alert
+      %ul
+        -@main.errors.full_messages.each do |message|
+          %li= message
+- elsif @sub != nil
+  -if @sub.errors.any?
+    .alert
+      %ul
+        -@sub.errors.full_messages.each do |message|
+          %li= message
+- elsif @soop != nil
+  -if @soop.errors.any?
+    .alert
+      %ul
+        -@soop.errors.full_messages.each do |message|
+          %li= message
