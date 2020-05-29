@@ -5,12 +5,12 @@ $app_dir = "/var/www/rails/pochi_app" #自分のアプリケーション名
 $listen  = File.expand_path 'tmp/sockets/.unicorn.sock', $app_dir
 $pid     = File.expand_path 'tmp/pids/unicorn.pid', $app_dir
 $std_log = File.expand_path 'log/unicorn.log', $app_dir
-RAILS_ROOT = File.expand_path('../../', __FILE__)
-ENV['BUNDLE_GEMFILE'] = RAILS_ROOT + "/Gemfile"
+# RAILS_ROOT = File.expand_path('../../', __FILE__)
+# ENV['BUNDLE_GEMFILE'] = RAILS_ROOT + "/Gemfile"
 # set config
 worker_processes  $worker
 working_directory RAILS_ROOT
-# working_directory $app_dir
+working_directory $app_dir
 stderr_path $std_log
 stdout_path $std_log
 timeout $timeout
