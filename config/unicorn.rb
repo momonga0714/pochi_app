@@ -4,7 +4,7 @@ working_directory "/home/anime/deploy_sample/current" #appと同じ階層を指�
 timeout 3600
 
 
-listen "/var/run/unicorn/Nginxで設定した名前.sock" ★
+listen "/var/run/unicorn/Nginxで設定した名前.sock"
 pid "/var/run/unicorn/Nginxで設定した名前.pid"
 
 
