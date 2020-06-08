@@ -6,14 +6,14 @@
         .show__contents__content
           .Box
             .Box__name
-              %h2= @soop.soop_name
+              %h2= "◎#{@soop.soop_name}◎"
             .Box__image
               %ul
                 %li.top-image
                 -if @soop_images.blank?
                   = ""
                 - else
-                  = image_tag @soop_images[0].image.url ,class:"soopImage"
+                  = image_tag @soop_images[0].image.url ,class:"mainImage"
                     - if @soop.user_id.present?
                 %ul
                   - @soop_images.each do |image|

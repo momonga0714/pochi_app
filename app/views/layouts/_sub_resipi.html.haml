@@ -13,7 +13,7 @@
                 -if @sub_images.blank?
                   = ""
                 - else
-                  = image_tag @sub_images[0].image.url ,class:"subImage"
+                  = image_tag @sub_images[0].image.url ,class:"mainImage"
                     - if @sub.user_id.present?
                 %ul
                   - @sub_images.each do |image|

@@ -26,6 +26,9 @@ h1{
             color: #7d940a;
           }
           &__image {
+            .mainImage{
+              width: 100%;
+            }
             ul {
               position: relative;
               list-style: none;
