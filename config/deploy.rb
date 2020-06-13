@@ -10,7 +10,7 @@ set :linked_dirs, fetch(:linked_dirs, []).push('log', 'tmp/pids', 'tmp/cache', '
 set :rbenv_type, :user
 set :rbenv_ruby, '2.5.1'
 
-# chat-spaceで使ったpemを指定
+
 set :ssh_options, auth_methods: ['publickey'],
                   keys: ['~/.ssh/pochi.pem']
 
