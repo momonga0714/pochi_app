@@ -7,12 +7,13 @@ class Main < ApplicationRecord
   belongs_to_active_hash :genre
   belongs_to_active_hash :type
 
-    validates :main_name,              presence: true, uniqueness: { scope: :user_id}
-
-    
+  validates :main_name,              presence: true, uniqueness: { scope: :user_id}
+  validates :genre_id,               presence: true
+  validates :type_id,                presence: true
+  
     def first_image
       resipi_images.first
     end
-
+    
     scope :search, -> (search){where('main_name LIKE(?)', "%#{search}%")}
 end

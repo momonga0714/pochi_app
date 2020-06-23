@@ -8,6 +8,8 @@ class Soop < ApplicationRecord
   belongs_to_active_hash :type
 
   validates :soop_name,              presence: true, uniqueness: { scope: :user_id}
+  validates :genre_id,             presence: true
+  validates :type_id,             presence: true
 
   def first_image
     resipi_images.first
