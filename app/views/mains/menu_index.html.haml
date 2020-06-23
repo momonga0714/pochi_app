@@ -21,8 +21,8 @@
               = link_to "◎#{main.main_name}◎","/mains/#{main.id}"
       - else
         = ""
-  .page
-    = paginate(@mains)
+  -# .page
+  -#   = paginate(@mains)
 
   .submit_area            
     = link_to "今週のこんだてを決める", "/",class: "exhibitSubmit1"
