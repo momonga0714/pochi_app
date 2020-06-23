@@ -205,3 +205,22 @@ ja:
       long: "%Y/%m/%d %H:%M"
       short: "%m/%d %H:%M"
     pm: 午後
+ja:
+  activerecord:
+    errors:
+      models:
+        user:
+          attributes:
+            email:
+              blank: を入力してください
+              invalid: は不正な値です
+              taken: はすでに存在します
+            password:
+              blank: を入力してください
+              too_short: は7文字以上で入力してください
+            password_confirmation:
+              confirmation: とパスワードの入力が一致しません
+            genre:
+              blank: を入力してください
+      messages:
+        record_invalid: 
