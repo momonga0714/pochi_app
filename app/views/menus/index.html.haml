@@ -3,7 +3,7 @@
   %h1.app-title Pochi
   .header__box__navi__right
     - if user_signed_in?
-      = link_to "マイページ", "/users", class:"header__box__navi__right__mypage" 
+      = link_to "マイページ", "#", class:"header__box__navi__right__mypage" 
       = link_to "ログアウト", "/users/sign_out", class:"header__box__navi__right__logout",method: :delete 
     - else
       =link_to "ログイン","/users/sign_in", class:"header__box__navi__right__login" 

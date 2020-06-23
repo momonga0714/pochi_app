@@ -10,9 +10,30 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # end
 
   # POST /resource
-  # def create
-  #   super
-  # end
+  def create
+    @user = User.new(sign_up_params)
+    unless @user.valid?
+      # flash.now[:alert] = @user.errors.full_messages
+      flash[:alert] = '会員登録に失敗しました。記入が適切かどうかご確認ください。'
+      render :new and return
+    end
+    session["devise.regist_data"] = {user: @user.attributes}
+    session["devise.regist_data"][:user]["password"] = params[:user][:password]
+    @sending_destination = @user.build_sending_destination
+    render :new_sending_destination
+  end
+
+  def create_sending_destination
+    @user = User.new(session["devise.regist_data"]["user"])
+    @sending_destination = SendingDestination.new(sending_destination_params)
+    unless @sending_destination.valid?
+      flash.now[:alert] = @sending_destination.errors.full_messages
+      render :new_sending_destination and return
+    end
+    @user.build_sending_destination(@sending_destination.attributes)
+    @user.save
+    sign_in(:user, @user)
+  end
 
   # GET /resource/edit
   # def edit
