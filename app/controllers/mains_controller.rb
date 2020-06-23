@@ -26,7 +26,7 @@ class MainsController < ApplicationController
       else
         @main.resipi_images.new
         redirect_to "/"
-        flash[:alert] = '料理がすでに登録されているため、登録ができませんでした。'
+        flash[:alert] = '料理がすでに登録されているか、空欄のため登録ができませんでした。'
       end
     end
   end
@@ -52,11 +52,13 @@ class MainsController < ApplicationController
   end
 
   def menu_index
-    @mains = Main.includes(:resipi_images).order("created_at DESC").page(params[:page]).per(5)
+    # @mains = Main.includes(:resipi_images).order("created_at DESC").page(params[:page]).per(5)
+    @mains = Main.includes(:resipi_images).order("created_at DESC")
   end
 
   def search
-    @mains = Main.search(params[:keyword]).order("created_at DESC").page(params[:page]).per(5)
+    # @mains = Main.search(params[:keyword]).order("created_at DESC").page(params[:page]).per(5)
+    @mains = Main.search(params[:keyword]).order("created_at DESC")
     
   end
 

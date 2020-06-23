@@ -25,7 +25,7 @@ class SoopsController < ApplicationController
       else
         @soop.resipi_images.new
         redirect_to "/"
-        flash[:alert] = '料理がすでに登録されているため、登録ができませんでした。'
+        flash[:alert] = '料理がすでに登録されているか、空欄のため登録ができませんでした。'
       end
     end
   end
@@ -55,11 +55,13 @@ class SoopsController < ApplicationController
   end
 
   def menu_index
-    @soops = Soop.includes(:resipi_images).order("created_at DESC").page(params[:page]).per(5)
+    # @soops = Soop.includes(:resipi_images).order("created_at DESC").page(params[:page]).per(5)
+    @soops = Soop.includes(:resipi_images).order("created_at DESC")
   end
 
   def search
-    @soops = Soop.search(params[:keyword]).order("created_at DESC").page(params[:page]).per(5)
+    # @soops = Soop.search(params[:keyword]).order("created_at DESC").page(params[:page]).per(5)
+    @soops = Soop.search(params[:keyword]).order("created_at DESC")
     
   end
 
