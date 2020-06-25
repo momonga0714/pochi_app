@@ -24,6 +24,7 @@ You can purchase the ingredients with confidence for a week.
 <img width="1440" alt="スクリーンショット 2020-06-25 9 23 22" src="https://user-images.githubusercontent.com/61259625/85640052-a5852380-b6c5-11ea-8e7c-131fc8b4562a.png">
 
 4. 料理の登録(Registration of dishes)
+<br>
 <img width="1440" alt="スクリーンショット 2020-06-25 9 50 07" src="https://user-images.githubusercontent.com/61259625/85641653-3100b380-b6ca-11ea-8e1a-7f709d202750.png"><br>
 <img width="1440" alt="スクリーンショット 2020-06-25 9 58 59" src="https://user-images.githubusercontent.com/61259625/85641794-95bc0e00-b6ca-11ea-9871-202b4b5f1610.png">
 <br>
