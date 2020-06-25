@@ -42,51 +42,7 @@ $(document).on('turbolinks:load', function(){
         $('.label-content').hide();
       }
     }
-    // // 編集 sub
-    // if (window.location.href.match(/\/subs\/\d+\/edit/)){
-    //   //登録済み画像のプレビュー表示欄の要素を取得する
-    //   var prevContent = $('.label-content').prev();
-    //   labelWidth = (620 - $(prevContent).css('width').replace(/[^0-9]/g, ''));
-    //   $('.label-content').css('width', labelWidth);
-    //   //プレビューにidを追加
-    //   $('.preview-box').each(function(index, box){
-    //     $(box).attr('id', `preview-box__${index}`);
-    //   })
-    //   //削除ボタンにidを追加
-    //   $('.delete-box').each(function(index, box){
-    //     $(box).attr('id', `delete_btn_${index}`);
-    //   })
-
-    //   var count = $('.preview-box').length;
-    //   //プレビューが5あるときは、投稿ボックスを消しておく
-    //   if (count == 5) {
-    //     $('.label-content').hide();
-    //   }
-    // }
-
-    // // 編集 soop
-    // if (window.location.href.match(/\/soops\/\d+\/edit/)){
-    //   //登録済み画像のプレビュー表示欄の要素を取得する
-    //   var prevContent = $('.label-content').prev();
-    //   labelWidth = (620 - $(prevContent).css('width').replace(/[^0-9]/g, ''));
-    //   $('.label-content').css('width', labelWidth);
-    //   //プレビューにidを追加
-    //   $('.preview-box').each(function(index, box){
-    //     $(box).attr('id', `preview-box__${index}`);
-    //   })
-    //   //削除ボタンにidを追加
-    //   $('.delete-box').each(function(index, box){
-    //     $(box).attr('id', `delete_btn_${index}`);
-    //   })
-
-    //   var count = $('.preview-box').length;
-    //   //プレビューが5あるときは、投稿ボックスを消しておく
-    //   if (count == 5) {
-    //     $('.label-content').hide();
-    //   }
-    // }
-
-
+    
 
 
     function setLabel() {
@@ -188,66 +144,7 @@ $(document).on('turbolinks:load', function(){
       }
       
 
-      // if ($(`#sub_resipi_images_attributes_${id}__destroy`).length == 0) {
-      //   //フォームの中身を削除 
-      //   $(`#sub_resipi_images_attributes_${id}_image`).val("");
-      //   var count = $('.preview-box').length;
-      //   //5個めが消されたらラベルを表示
-      //   if (count == 4) {
-      //     $('.label-content').show();
-      //   }
-      //   setLabel(count);
-      //   if(id < 5){
-      //     $('.label-box').attr({id: `label-box--${id}`,for: `sub_resipi_images_attributes_${id}_image`});
-          
-      //   }
-      // } else {
-      //   //投稿編集時
-      //   $(`#sub_resipi_images_attributes_${id}__destroy`).prop('checked',true);
-       
-      //   //5個めが消されたらラベルを表示
-      //   if (count == 4) {
-      //     $('.label-content').show();
-      //   }
-      //   //ラベルのwidth操作
-      //   setLabel();
-      //   //ラベルのidとforの値を変更
-      //   //削除したプレビューのidによって、ラベルのidを変更する
-      //   if(id < 5){
-      //     $('.label-box').attr({id: `label-box--${id}`,for: `sub_resipi_images_attributes_${id}_image`});
-      //   }
-      // }
-
-      // if ($(`#soop_resipi_images_attributes_${id}__destroy`).length == 0) {
-      //   //フォームの中身を削除 
-      //   $(`#soop_resipi_images_attributes_${id}_image`).val("");
-      //   var count = $('.preview-box').length;
-      //   //5個めが消されたらラベルを表示
-      //   if (count == 4) {
-      //     $('.label-content').show();
-      //   }
-      //   setLabel(count);
-      //   if(id < 5){
-      //     $('.label-box').attr({id: `label-box--${id}`,for: `soop_resipi_images_attributes_${id}_image`});
-          
-      //   }
-      // } else {
-      //   //投稿編集時
-      //   $(`#soop_resipi_images_attributes_${id}__destroy`).prop('checked',true);
-       
-      //   //5個めが消されたらラベルを表示
-      //   if (count == 4) {
-      //     $('.label-content').show();
-      //   }
-      //   //ラベルのwidth操作
-      //   setLabel();
-      //   //ラベルのidとforの値を変更
-      //   //削除したプレビューのidによって、ラベルのidを変更する
-      //   if(id < 5){
-      //     $('.label-box').attr({id: `label-box--${id}`,for: `soop_resipi_images_attributes_${id}_image`});
-      //   }
-      // }
-
+      
 
       
     });

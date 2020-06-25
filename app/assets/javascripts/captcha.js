@@ -13,3 +13,11 @@ window.onload = function(){
   });
 
 }
+
+$(function () {
+  $('#ss').hover(function() {
+    $(this).next('p').show();
+  }, function(){
+    $(this).next('p').hide();
+  });
+});
