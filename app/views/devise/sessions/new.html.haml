@@ -7,9 +7,9 @@
       .registration
         .registration__text
           アカウントをお持ちでない方
-        .registration__btn
-          - if devise_mapping.registerable? && controller_name != 'registrations'
-            = link_to "新規登録", new_registration_path(resource_name), class: "new_registration"
+          .registration__btn
+            - if devise_mapping.registerable? && controller_name != 'registrations'
+              = link_to "新規登録", new_registration_path(resource_name), class: "new_registration"
       = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
         .main
           .input
