@@ -15,19 +15,24 @@ class MainsController < ApplicationController
 
   def create
     @main = Main.new(mains_params)
-    @main.user_id = current_user.id
-    if @main.type_id.blank? == true || @main.genre_id.blank? == true
-      redirect_to "/"
-      flash[:alert] = '料理の種類かカテゴリーを選択し再度登録してください。'
-    else
-      if @main.save
+    if @main.user_id != nil
+      @main.user_id = current_user.id
+      if @main.type_id.blank? == true || @main.genre_id.blank? == true
         redirect_to "/"
-        flash[:notice] = '登録が完了しました'
+        flash[:alert] = '料理の種類かカテゴリーを選択し再度登録してください。'
       else
-        @main.resipi_images.new
-        redirect_to "/"
-        flash[:alert] = '料理がすでに登録されているか、空欄のため登録ができませんでした。'
+        if @main.save
+          redirect_to "/"
+          flash[:notice] = '登録が完了しました'
+        else
+          @main.resipi_images.new
+          redirect_to "/"
+          flash[:alert] = '料理がすでに登録されているか、空欄のため登録ができませんでした。'
+        end
       end
+    else
+      redirect_to "/"
+      flash[:alert] = '料理の登録にはログインが必要です。'
     end
   end
 
