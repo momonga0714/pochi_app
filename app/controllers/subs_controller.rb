@@ -1,39 +1,62 @@
 class SubsController < ApplicationController
   before_action :set_sub,only:[:show,:destroy,:edit,:update]
 
-  def index
-    @subs = Sub.includes(:resipi_images)
-  end
+  # def index
+  #   @subs = Sub.includes(:resipi_images)
+  # end
 
   def new
-    @sub = Sub.new
-    @sub.resipi_images.new
+    if user_signed_in?
+      @sub = Sub.new
+      @sub.resipi_images.new
+    else
+      redirect_to "/"
+      flash[:alert] = 'このページにアクセスするにはログインが必要です'
+    end
+    
   end
 
   def create
     @sub = Sub.new(subs_params)
-    @sub.user_id = current_user.id
-    if @sub.type_id.blank? == true || @sub.genre_id.blank? == true
-      redirect_to "/"
-      flash[:alert] = '料理の種類かカテゴリーを選択し再度登録してください。'
-    else
-      if @sub.save
+    if user_signed_in?
+      @sub.user_id = current_user.id
+      if @sub.type_id.blank? == true || @sub.genre_id.blank? == true
         redirect_to "/"
-        flash[:notice] = '登録が完了しました'
+        flash[:alert] = '料理の種類かカテゴリーを選択し再度登録してください。'
       else
-        @sub.resipi_images.new
-        redirect_to "/"
-        flash[:alert] = '料理がすでに登録されているか、空欄のため登録ができませんでした。'
+        if @sub.save
+          redirect_to "/"
+          flash[:notice] = '登録が完了しました'
+        else
+          @sub.resipi_images.new
+          redirect_to "/"
+          flash[:alert] = '料理がすでに登録されているか、空欄のため登録ができませんでした。'
+        end
       end
+    else
+      redirect_to "/"
+      flash[:alert] = 'このページにアクセスするにはログインが必要です'
     end
+
     
   end
   def show
-    @sub_images = @sub.resipi_images
+    if user_signed_in?
+      @sub_images = @sub.resipi_images
+    else
+      redirect_to "/"
+      flash[:alert] = 'このページにアクセスするにはログインが必要です'
+    end
+    
   end
 
   def edit
-    
+    if user_signed_in?
+      
+    else
+      redirect_to "/"
+      flash[:alert] = 'このページにアクセスするにはログインが必要です'
+    end
   end
 
   def update
@@ -53,8 +76,14 @@ class SubsController < ApplicationController
   end
 
   def menu_index
-    # @subs = Sub.includes(:resipi_images).order("created_at DESC").page(params[:page]).per(5)
-    @subs = Sub.includes(:resipi_images).order("created_at DESC")
+    if user_signed_in?
+      # @subs = Sub.includes(:resipi_images).order("created_at DESC").page(params[:page]).per(5)
+      @subs = Sub.includes(:resipi_images).order("created_at DESC")
+    else
+      redirect_to "/"
+      flash[:alert] = 'このページにアクセスするにはログインが必要です'
+    end
+    
   end
 
   def search

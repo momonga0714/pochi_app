@@ -16,7 +16,13 @@ class MenusController < ApplicationController
 
   
   def menu_index
-    @menus = Menu.includes(:resipi_images)
+    if user_signed_in?
+      @menus = Menu.includes(:resipi_images)
+    else
+      redirect_to "/"
+      flash[:alert] = 'このページにアクセスするにはログインが必要です'
+    end
+    
   end
 
   

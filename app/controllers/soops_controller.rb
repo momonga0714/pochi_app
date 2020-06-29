@@ -8,30 +8,46 @@ class SoopsController < ApplicationController
   end
 
   def new
-    @soop = Soop.new
-    @soop.resipi_images.new
+    if user_signed_in?
+      @soop = Soop.new
+      @soop.resipi_images.new
+    else
+      redirect_to "/"
+      flash[:alert] = 'このページにアクセスするにはログインが必要です'
+    end
   end
 
   def create
     @soop = Soop.new(soops_params)
-    @soop.user_id = current_user.id
-    if @soop.type_id.blank? == true || @soop.genre_id.blank? == true
-      redirect_to "/"
-      flash[:alert] = '料理の種類かカテゴリーを選択し再度登録してください。'
-    else
-      if @soop.save
+    if user_signed_in?
+      @soop.user_id = current_user.id
+      if @soop.type_id.blank? == true || @soop.genre_id.blank? == true
         redirect_to "/"
-        flash[:notice] = '登録が完了しました'
+        flash[:alert] = '料理の種類かカテゴリーを選択し再度登録してください。'
       else
-        @soop.resipi_images.new
-        redirect_to "/"
-        flash[:alert] = '料理がすでに登録されているか、空欄のため登録ができませんでした。'
+        if @soop.save
+          redirect_to "/"
+          flash[:notice] = '登録が完了しました'
+        else
+          @soop.resipi_images.new
+          redirect_to "/"
+          flash[:alert] = '料理がすでに登録されているか、空欄のため登録ができませんでした。'
+        end
       end
+    else
+      redirect_to "/"
+      flash[:alert] = 'このページにアクセスするにはログインが必要です'
     end
+
   end
 
   def show
-    @soop_images = @soop.resipi_images
+    if user_signed_in?
+      @soop_images = @soop.resipi_images
+    else
+      redirect_to "/"
+      flash[:alert] = 'このページにアクセスするにはログインが必要です'
+    end
   end
 
   def destroy
@@ -41,7 +57,12 @@ class SoopsController < ApplicationController
   end
 
   def edit
-    
+    if user_signed_in?
+      
+    else
+      redirect_to "/"
+      flash[:alert] = 'このページにアクセスするにはログインが必要です'
+    end
   end
 
   def update
@@ -55,8 +76,13 @@ class SoopsController < ApplicationController
   end
 
   def menu_index
-    # @soops = Soop.includes(:resipi_images).order("created_at DESC").page(params[:page]).per(5)
-    @soops = Soop.includes(:resipi_images).order("created_at DESC")
+    if user_signed_in?
+      # @soops = Soop.includes(:resipi_images).order("created_at DESC").page(params[:page]).per(5)
+      @soops = Soop.includes(:resipi_images).order("created_at DESC")
+    else
+      redirect_to "/"
+      flash[:alert] = 'このページにアクセスするにはログインが必要です'
+    end
   end
 
   def search

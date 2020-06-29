@@ -5,17 +5,27 @@ class MainsController < ApplicationController
   end
 
   def new
+    if user_signed_in?
     @main = Main.new
     @main.resipi_images.new
+    else
+      redirect_to "/"
+      flash[:alert] = 'このページにアクセスするにはログインが必要です'
+    end
   end
 
   def show
-    @main_images = @main.resipi_images
+    if user_signed_in?
+      @main_images = @main.resipi_images
+    else
+      redirect_to "/"
+      flash[:alert] = 'このページにアクセスするにはログインが必要です'
+    end
   end
 
   def create
     @main = Main.new(mains_params)
-    if @main.user_id != nil
+    if user_signed_in?
       @main.user_id = current_user.id
       if @main.type_id.blank? == true || @main.genre_id.blank? == true
         redirect_to "/"
@@ -37,7 +47,12 @@ class MainsController < ApplicationController
   end
 
   def edit
-    
+    if user_signed_in?
+
+    else
+      redirect_to "/"
+      flash[:alert] = 'このページにアクセスするにはログインが必要です'
+    end
   end
 
   def update
@@ -57,8 +72,13 @@ class MainsController < ApplicationController
   end
 
   def menu_index
-    # @mains = Main.includes(:resipi_images).order("created_at DESC").page(params[:page]).per(5)
-    @mains = Main.includes(:resipi_images).order("created_at DESC")
+    if user_signed_in?
+      # @mains = Main.includes(:resipi_images).order("created_at DESC").page(params[:page]).per(5)
+      @mains = Main.includes(:resipi_images).order("created_at DESC")
+    else
+      redirect_to "/"
+      flash[:alert] = 'このページにアクセスするにはログインが必要です'
+    end
   end
 
   def search
