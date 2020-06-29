@@ -8,5 +8,7 @@ FactoryBot.define do
     after(:build) do |main|
       main.resipi_images << build(:resipi_image, main: main)
     end
+    created_at { Faker::Time.between(from: DateTime.now - 2, to: DateTime.now) }
+    user
   end
 end
