@@ -29,5 +29,5 @@
     = paginate(@mains)
 
   .submit_area            
-    = link_to "今週のこんだてを決める", "/",class: "exhibitSubmit1"
+    = link_to "今週のこんだてを決める", "/",data: {"turbolinks" => false},class: "exhibitSubmit1"
   = render "layouts/footer"

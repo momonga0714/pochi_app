@@ -1,5 +1,6 @@
 .wrapper-menu-index
   %h1.app-title Pochi
+  
 
   
   .submit_area            
@@ -7,5 +8,5 @@
     = link_to "主菜", "/mains/menu_index",class: "exhibitSubmit3"
     = link_to "副菜", "/subs/menu_index",class: "exhibitSubmit3"
     = link_to "汁物", "/soops/menu_index",class: "exhibitSubmit3"
-    = link_to "今週のこんだてを決める", "/",class: "exhibitSubmit1"
+    = link_to "今週のこんだてを決める", "/",data: {"turbolinks" => false},class: "exhibitSubmit1"
 = render "layouts/footer"

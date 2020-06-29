@@ -47,6 +47,6 @@
           = f.collection_select :type_id, Type.all, :id, :name, { prompt: "種類を選択してください" }, class: "exhibitInput"
           .submit-area
             = f.submit :料理を更新する ,class: "exhibitSubmit1"
-            = link_to "/", class: "exhibitSubmit2" do
+            = link_to "/", data: {"turbolinks" => false},class: "exhibitSubmit2" do
               もどる
 = render "layouts/footer"
