@@ -2,6 +2,7 @@ require 'rails_helper'
 
 
 describe MainsController, type: :controller do
+  context 'login' do
   before do
     user = create(:user)
     sign_in user
@@ -66,6 +67,33 @@ describe MainsController, type: :controller do
       expect(response).to render_template :search
     end
   end
+end
+
+context 'not login' do
+  describe 'GET #new' do
+    it "ログアウトしている状態でアクセスした場合、menu_index.html.hamlに遷移すること" do
+      get :new
+      redirect_to menu_index_menus_path
+    end
+  end
+
+  describe 'GET #edit' do
+    it "ログアウトしている状態でアクセスした場合、menu_index.html.hamlに遷移すること" do
+      main = create(:main)
+      get :edit, params: { id: main }
+      redirect_to menu_index_menus_path
+    end
+  end
+
+  describe 'GET #show' do
+    it "ログアウトしている状態でアクセスした場合、menu_index.html.hamlに遷移すること" do
+      main = create(:main)
+      get :show, params: { id: main }
+      redirect_to menu_index_menus_path
+    end
+  end
+
+end
 
 
   # describe MainsController, type: :controller do
