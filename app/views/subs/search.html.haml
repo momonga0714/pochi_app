@@ -25,8 +25,8 @@
                       = link_to "◎#{sub.sub_name}◎","/subs/#{sub.id}"
               - else
                 = ""
-  -# .page
-  -#   = paginate(@subs)
+  .page
+    = paginate(@subs)
 
   .submit_area            
     = link_to "今週のこんだてを決める", "/",data: {"turbolinks" => false},class: "exhibitSubmit1"

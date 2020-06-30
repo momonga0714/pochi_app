@@ -77,8 +77,7 @@ class SoopsController < ApplicationController
 
   def menu_index
     if user_signed_in?
-      # @soops = Soop.includes(:resipi_images).order("created_at DESC").page(params[:page]).per(5)
-      @soops = Soop.includes(:resipi_images).order("created_at DESC")
+      @soops = Soop.includes(:resipi_images).where(user_id: current_user.id).order("created_at DESC").page(params[:page]).per(5)
     else
       redirect_to "/"
       flash[:alert] = 'このページにアクセスするにはログインが必要です'
@@ -86,8 +85,7 @@ class SoopsController < ApplicationController
   end
 
   def search
-    # @soops = Soop.search(params[:keyword]).order("created_at DESC").page(params[:page]).per(5)
-    @soops = Soop.search(params[:keyword]).order("created_at DESC")
+    @soops = Soop.search(params[:keyword]).where(user_id: current_user.id).order("created_at DESC").page(params[:page]).per(5)
     
   end
 

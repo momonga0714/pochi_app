@@ -22,8 +22,8 @@
               = link_to "◎#{soop.soop_name}◎","/soops/#{soop.id}"
       - else
         = ""
-  -# .page
-  -#   = paginate(@soops)
+  .page
+    = paginate(@soops)
 
   .submit_area            
     = link_to "今週のこんだてを決める", "/",data: {"turbolinks" => false},class: "exhibitSubmit1"

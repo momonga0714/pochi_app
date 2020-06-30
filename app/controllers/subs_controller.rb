@@ -77,8 +77,8 @@ class SubsController < ApplicationController
 
   def menu_index
     if user_signed_in?
-      # @subs = Sub.includes(:resipi_images).order("created_at DESC").page(params[:page]).per(5)
-      @subs = Sub.includes(:resipi_images).order("created_at DESC")
+      @subs = Sub.includes(:resipi_images).where(user_id: current_user.id).order("created_at DESC").page(params[:page]).per(5)
+      # @subs = Sub.includes(:resipi_images).order("created_at DESC")
     else
       redirect_to "/"
       flash[:alert] = 'このページにアクセスするにはログインが必要です'
@@ -87,8 +87,8 @@ class SubsController < ApplicationController
   end
 
   def search
-    # @subs = Sub.search(params[:keyword]).order("created_at DESC").page(params[:page]).per(5)
-    @subs = Sub.search(params[:keyword]).order("created_at DESC")
+    @subs = Sub.search(params[:keyword]).where(user_id: current_user.id).order("created_at DESC").page(params[:page]).per(5)
+    # @subs = Sub.search(params[:keyword]).order("created_at DESC")
   end
 
 

@@ -73,8 +73,7 @@ class MainsController < ApplicationController
 
   def menu_index
     if user_signed_in?
-      # @mains = Main.includes(:resipi_images).order("created_at DESC").page(params[:page]).per(5)
-      @mains = Main.includes(:resipi_images).order("created_at DESC")
+      @mains = Main.includes(:resipi_images).where(user_id: current_user.id).order("created_at DESC").page(params[:page]).per(5)
     else
       redirect_to "/"
       flash[:alert] = 'このページにアクセスするにはログインが必要です'
@@ -82,9 +81,7 @@ class MainsController < ApplicationController
   end
 
   def search
-    # @mains = Main.search(params[:keyword]).order("created_at DESC").page(params[:page]).per(5)
-    @mains = Main.search(params[:keyword]).order("created_at DESC")
-    
+    @mains = Main.search(params[:keyword]).where(user_id: current_user.id).order("created_at DESC").page(params[:page]).per(5)
   end
 
   def count
