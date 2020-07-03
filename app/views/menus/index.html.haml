@@ -14,9 +14,13 @@
       .week__menu
         %table.title-class__monday{:border => "1"}
           %tr
-            %th 月曜日
+            %th 
+            %td 主菜
+            %td 副菜
+            %td 汁物
+            %td ジャンル
           %tr
-            %th 主菜
+            %th 月曜日
             %td
               -if @mains.blank? != true && @mains.length >= 1
                 - main_mon = @mains[rand(@mains.length)]
@@ -24,8 +28,6 @@
               - else
                 - @mains = ""
                 = @mains
-          %tr
-            %th 副菜
             %td
               -if @subs.blank? != true && @mains.length >= 1
                 - sub_mon = @subs[rand(@subs.length)]
@@ -41,8 +43,6 @@
               - else
                 - @subs = ""
                 = @subs
-          %tr
-            %th 汁物
             %td
               - if @soops.blank? != true && @mains.length >= 1
                 - soop_mon = @soops[rand(@soops.length)]
@@ -61,19 +61,14 @@
               -else
                 - @soops = ""
                 = @soops
-          %tr
-            %th ジャンル
             %td
               - if main_mon.blank? != true
                 = main_mon.genre.name
               - else
                 - main_mon = ""
                 = main_mon
-        %table.title-class__Tuesday{:border => "1"}
           %tr
             %th 火曜日
-          %tr
-            %th 主菜
             %td
               -if @mains.blank? != true && @mains.length >= 2
                 - main_tues = @mains[rand(@mains.length)]
@@ -88,8 +83,6 @@
               - else
                 - main = ""
                 = main
-          %tr
-            %th 副菜
             %td
               -if @subs.blank? != true && @mains.length >= 2
                 - sub_tues = @subs[rand(@subs.length)]
@@ -105,9 +98,6 @@
               - else
                 - @subs = ""
                 = @subs
-              
-          %tr
-            %th 汁物
             %td
               - if @soops.blank? != true && @mains.length >= 2
                 - soop_tues = @soops[rand(@soops.length)]
@@ -126,20 +116,14 @@
               -else
                 - @soops = ""
                 = @soops
-          %tr
-            %th ジャンル
             %td
               - if main_tues.blank? != true
                 = main_tues.genre.name
               - else
                 - main_tues = ""
                 = main_tues
-              
-        %table.title-class__Wednesday{:border => "1"}
           %tr
             %th 水曜日
-          %tr
-            %th 主菜
             %td
               -if @mains.blank? != true && @mains.length >= 3
                 - main_wed = @mains[rand(@mains.length)]
@@ -154,9 +138,6 @@
               - else
                 - main = ""
                 = main
-              
-          %tr
-            %th 副菜
             %td
               -if @subs.blank? != true && @mains.length >= 3
                 - sub_wed = @subs[rand(@subs.length)]
@@ -172,10 +153,6 @@
               - else
                 - @subs = ""
                 = @subs
-
-             
-          %tr
-            %th 汁物
             %td
               - if @soops.blank? != true && @mains.length >= 3
                 - soop_wed = @soops[rand(@soops.length)]
@@ -194,20 +171,14 @@
               -else
                 - @soops = ""
                 = @soops
-          %tr
-            %th ジャンル
             %td
               - if main_wed.blank? != true
                 = main_wed.genre.name
               - else
                 - main_wed = ""
                 = main_wed
-              
-        %table.title-class__Thursday{:border => "1"}
           %tr
             %th 木曜日
-          %tr
-            %th 主菜
             %td
               -if @mains.blank? != true && @mains.length >= 4
                 - main_thu = @mains[rand(@mains.length)]
@@ -222,9 +193,6 @@
               - else
                 - main = ""
                 = main
-              
-          %tr
-            %th 副菜
             %td
               -if @subs.blank? != true && @mains.length >= 4
                 - sub_thu = @subs[rand(@subs.length)]
@@ -240,9 +208,6 @@
               - else
                 - @subs = ""
                 = @subs
-
-          %tr
-            %th 汁物
             %td
               - if @soops.blank? != true && @mains.length >= 4
                 - soop_thu = @soops[rand(@soops.length)]
@@ -261,20 +226,14 @@
               -else
                 - @soops = ""
                 = @soops
-          %tr
-            %th ジャンル
             %td
               - if main_thu.blank? != true
                 = main_thu.genre.name
               - else
                 - main_thu = ""
                 = main_thu
-              
-        %table.title-class__Friday{:border => "1"}
           %tr
             %th 金曜日
-          %tr
-            %th 主菜
             %td
               -if @mains.blank? != true && @mains.length >=5
                 - main_fri = @mains[rand(@mains.length)]
@@ -289,8 +248,6 @@
               - else
                 - main = ""
                 = main
-          %tr
-            %th 副菜
             %td
               -if @subs.blank? != true && @mains.length >=5
                 - sub_fri = @subs[rand(@subs.length)]
@@ -306,8 +263,6 @@
               - else
                 - @subs = ""
                 = @subs
-          %tr
-            %th 汁物
             %td
               - if @soops.blank? != true && @mains.length >=5
                 - soop_fri = @soops[rand(@soops.length)]
@@ -326,20 +281,14 @@
               -else
                 - @soops = ""
                 = @soops
-          %tr
-            %th ジャンル
             %td
               - if main_fri.blank? != true
                 = main_fri.genre.name
               - else
                 - main_fri = ""
                 = main_fri
-              
-        %table.title-class__Saturday{:border => "1"}
           %tr
             %th 土曜日
-          %tr
-            %th 主菜
             %td
               -if @mains.blank? != true && @mains.length >= 6
                 - main_sat = @mains[rand(@mains.length)]
@@ -354,8 +303,6 @@
               - else
                 - main = ""
                 = main
-          %tr
-            %th 副菜
             %td
               -if @subs.blank? != true && @mains.length >= 6
                 - sub_sat = @subs[rand(@subs.length)]
@@ -371,8 +318,6 @@
               - else
                 - @subs = ""
                 = @subs
-          %tr
-            %th 汁物
             %td
               - if @soops.blank? != true && @mains.length >= 6
                 - soop_sat = @soops[rand(@soops.length)]
@@ -391,20 +336,14 @@
               -else
                 - @soops = ""
                 = @soops
-          %tr
-            %th ジャンル
             %td
               - if main_sat.blank? != true
                 = main_sat.genre.name
               - else
                 - main_sat = ""
                 = main_sat
-              
-        %table.title-class__Sunday{:border => "1"}
           %tr
             %th 日曜日
-          %tr
-            %th 主菜
             %td
               -if @mains.blank? != true && @mains.length >= 7
                 - main_sun = @mains[rand(@mains.length)]
@@ -419,8 +358,6 @@
               - else
                 - main = ""
                 = main
-          %tr
-            %th 副菜
             %td
               -if @subs.blank? != true && @mains.length >= 7
                 - sub_sun = @subs[rand(@subs.length)]
@@ -436,8 +373,6 @@
               - else
                 - @subs = ""
                 = @subs
-          %tr
-            %th 汁物
             %td
               - if @soops.blank? != true && @mains.length >= 7
                 - soop_sun = @soops[rand(@soops.length)]
@@ -456,8 +391,6 @@
               -else
                 - @soops = ""
                 = @soops
-          %tr
-            %th ジャンル
             %td
               - if main_sun.blank? != true
                 = main_sun.genre.name
