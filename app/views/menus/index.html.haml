@@ -18,7 +18,7 @@
             %td 主菜
             %td 副菜
             %td 汁物
-            %td ジャンル
+            %th ジャンル
           %tr
             %th 月曜日
             %td
@@ -61,7 +61,7 @@
               -else
                 - @soops = ""
                 = @soops
-            %td
+            %th
               - if main_mon.blank? != true
                 = main_mon.genre.name
               - else
@@ -116,7 +116,7 @@
               -else
                 - @soops = ""
                 = @soops
-            %td
+            %th
               - if main_tues.blank? != true
                 = main_tues.genre.name
               - else
@@ -171,7 +171,7 @@
               -else
                 - @soops = ""
                 = @soops
-            %td
+            %th
               - if main_wed.blank? != true
                 = main_wed.genre.name
               - else
@@ -226,7 +226,7 @@
               -else
                 - @soops = ""
                 = @soops
-            %td
+            %th
               - if main_thu.blank? != true
                 = main_thu.genre.name
               - else
@@ -281,7 +281,7 @@
               -else
                 - @soops = ""
                 = @soops
-            %td
+            %th
               - if main_fri.blank? != true
                 = main_fri.genre.name
               - else
@@ -336,7 +336,7 @@
               -else
                 - @soops = ""
                 = @soops
-            %td
+            %th
               - if main_sat.blank? != true
                 = main_sat.genre.name
               - else
@@ -391,7 +391,7 @@
               -else
                 - @soops = ""
                 = @soops
-            %td
+            %th
               - if main_sun.blank? != true
                 = main_sun.genre.name
               - else
@@ -400,14 +400,14 @@
     - else
       = image_tag "3418554_s.jpg", size: "450x300", class: "top-image"
 
-%script{:src => "https://cdnjs.cloudflare.com/ajax/libs/html2canvas/0.4.1/html2canvas.js"}
-.submit_area            
-  - if user_signed_in?
-    = link_to "得意料理から今週のこんだてを決める", "/",data: {"turbolinks" => false},class: "exhibitSubmit1"
-    %a#ss.exhibitSubmit2{:download => "今週のこだんて.png", :href => ""} こんだてを保存する
-    %p.arrow_box 保存する際には、2秒ほど保存ボタンに矢印を乗せ、色がオレンジになるまでお待ちください。
-    = link_to "登録した料理を確認する", "/menus/menu_index",class: "exhibitSubmit3"
-  - else
-    = link_to "今週のこんだてを決める", "/users/sign_in",class: "exhibitSubmit1"
+  %script{:src => "https://cdnjs.cloudflare.com/ajax/libs/html2canvas/0.4.1/html2canvas.js"}
+  .submit_area            
+    - if user_signed_in?
+      = link_to "今週のこんだてを決める", "/",data: {"turbolinks" => false},class: "exhibitSubmit1"
+      %a#ss.exhibitSubmit2{:download => "今週のこだんて.png", :href => ""} こんだてを保存する
+      %p.arrow_box 保存する際には、2秒ほど保存ボタンに矢印を乗せ、色がオレンジになるまでお待ちください。
+      = link_to "登録した料理を確認する", "/menus/menu_index",class: "exhibitSubmit3"
+    - else
+      = link_to "今週のこんだてを決める", "/users/sign_in",class: "exhibitSubmit1"
 
-= render "layouts/footer"
+  = render "layouts/footer"

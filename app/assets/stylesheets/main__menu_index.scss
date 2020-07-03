@@ -36,7 +36,22 @@
 
 .week{
   height: 100%;
+  margin-bottom: 100px;
 }
+@media (max-width: 1040px) {
+  .week{
+    height: 100%;
+    margin-bottom: 200px;
+  }
+}
+@media (max-width: 640px) {
+  .week{
+    height: 100%;
+    margin-bottom: 300px;
+  }
+}
+
+
 
 .title{
   margin-top: 40px;

@@ -88,6 +88,11 @@ a.forget{
       }
     }
   }
+  @media (max-width: 1040px) {
+    .signin-main {
+      width: 100%;
+    }
+  }
 }
 
 .signin-footer {
