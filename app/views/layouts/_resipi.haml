@@ -115,7 +115,7 @@
           - if @main.user_id != nil && current_user.id == @main.user_id
             .userSelect
               = link_to 'この料理を削除する', main_path(@main.id), method: :delete, data: { confirm: "本当に削除しますか？" }, class: 'user__delete'
-              = link_to '商品の編集', edit_main_path(@main.id), data:{"turbolinks" => false}, class: 'user__edit'
+              = link_to '料理の編集', edit_main_path(@main.id), data:{"turbolinks" => false}, class: 'user__edit'
             -# - elsif user_signed_in? && current_user.id == @main.user_id
             -#   .userSelect
             -#     = link_to '商品の編集', edit_main_path(@main.id), data:{"turbolinks" => false}, class: 'user__edit'

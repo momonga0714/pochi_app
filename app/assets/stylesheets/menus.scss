@@ -16,12 +16,29 @@ body{
 
 }
 td{
-  width: 120px;
+  width: 240px;
   font-size: 15px;
+  text-align: center;
   .genre{
     width: 50px;
   }
 }
+@media (max-width: 1040px) {
+  td{
+    width: 120px;
+    font-size: 15px;
+    text-align: center;
+    .genre{
+      width: 50px;
+    }
+  }
+
+}
+
+
+
+
+
 
 
 img{
@@ -171,10 +188,7 @@ img{
  font-weight: bold;
 }
 
-.submit_area{
-  margin-top: 50px;
-  // padding-bottom: 500px;
-}
+
 
 
 .exhibitInput{
@@ -187,6 +201,7 @@ img{
   background: white;
   line-height: 1.5;
   font-size: 16px;
+  color: #757575;
 }
 .exhibitSubmit1 {
   display: block;

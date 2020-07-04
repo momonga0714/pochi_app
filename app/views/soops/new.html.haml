@@ -16,7 +16,7 @@
               .exhibit__resipi__resipiProfile__inputForm__resipiImage__upload__box
                 .prev-content
                 .label-content
-                  %label{for: "soop_resipi_images_attributes_0_image", class: "label-box-soop", id: "label-box--0"}
+                  %label{for: "soop_resipi_images_attributes_0_image", class: "label-box-soop", id: "label-box-soop--0"}
                     %pre.label-box__text-visible クリックしてファイルをアップロード
                 .hidden-content
                   = f.fields_for :resipi_images do |i|
@@ -26,7 +26,7 @@
                     %input{class:"hidden-field", type: "file", name: "soop[resipi_images_attributes][3][image]", id: "soop_resipi_images_attributes_3_image" }
                     %input{class:"hidden-field", type: "file", name: "soop[resipi_images_attributes][4][image]", id: "soop_resipi_images_attributes_4_image" }
 
-          = f.text_field :soop_name, class: "exhibitInput", placeholder: "汁物を入力してください"
+          = f.text_field :soop_name, class: "exhibitInput", placeholder: "副菜を入力してください"
           = f.collection_select :genre_id, Genre.all, :id, :name, { prompt: "選択してください" }, class: "exhibitInput"
           = f.collection_select :type_id, Type.all, :id, :name, { prompt: "選択してください" }, class: "exhibitInput"
           .submit-area

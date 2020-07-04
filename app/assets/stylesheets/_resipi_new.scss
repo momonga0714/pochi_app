@@ -92,7 +92,7 @@
                   display: block;
                   border: 1px dashed #ccc;
                   position: relative;
-                  background: #f5f5f5;
+                  background: white;
                   width: calc(100% - 1px);
                   height: 180px;
                   cursor: pointer;
@@ -101,16 +101,16 @@
                   display: block;
                   border: 1px dashed #ccc;
                   position: relative;
-                  background: #f5f5f5;
+                  background: white;
                   width: calc(100% - 1px);
                   height: 180px;
                   cursor: pointer;
                 }
-                @media (max-width: 1040px) {
-                .label-box-soop{
-                  width: 100vw;
-                }
-              }
+              //   @media (max-width: 1040px) {
+              //   .label-box-soop{
+              //     width: 100vw;
+              //   }
+              // }
                 .label-box {
                   display: block;
                   border: 1px dashed #ccc;
@@ -133,8 +133,16 @@
                     pointer-events: none;
                     white-space: pre-wrap;
                     word-wrap: break-word;
+                    color: #757575;
                   }
                 }
+                @media (max-width: 1040px) {
+                  .label-box {
+                    background: white;
+                  }
+                }
+
+                
               }
               .hidden-content {
                 .hidden-field {
@@ -307,21 +315,31 @@
 
 @media (max-width: 1040px){
   .exhibit {
-    &__header {
-      &__logo {
-        &__image {
-        }
-      }
-    }
     &__resipi {
       &__resipiProfile {
         width: 100%;
         padding-bottom: 20px;
+        background-color: #f7f3e8;
         &__inputForm {
           &__resipiImage {
             border-top: 1px solid #eee;
             &__upload{
-              padding: 40px 0px 0 0px;
+              padding: 40px 40px 0 40px;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+@media (max-width: 670px){
+  .exhibit {
+    &__resipi {
+      &__resipiProfile {
+        &__inputForm {
+          &__resipiImage {
+            &__upload{
+              padding: 20px 20px 0 20px;
             }
           }
         }
