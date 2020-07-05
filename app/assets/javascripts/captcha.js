@@ -4,7 +4,7 @@ window.onload = function(){
   //HTML内に画像を表示
   
   //ボタンを押下した際にダウンロードする画像を作る
-  html2canvas(document.body,{
+  html2canvas(document.querySelector(".week__menu"),{
     onrendered: function(canvas){
       //aタグのhrefにキャプチャ画像のURLを設定
       var imgData = canvas.toDataURL();
