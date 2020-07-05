@@ -25,7 +25,7 @@ td{
 }
 @media (max-width: 1040px) {
   td{
-    width: 120px;
+    width: 160px;
     font-size: 15px;
     text-align: center;
     .genre{
@@ -34,6 +34,13 @@ td{
   }
 
 }
+@media (max-width: 640px) {
+  td{
+    height: 50px;
+    font-size: 12px;
+  }
+}
+
 
 
 
