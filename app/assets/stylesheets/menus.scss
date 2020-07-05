@@ -6,7 +6,7 @@ h1{
  color: brown;
 }
 .app-title{
-  font-size: 50px;
+  font-size: 80px;
   font-weight: bold;
 }
 
@@ -25,15 +25,25 @@ td{
 }
 @media (max-width: 1040px) {
   td{
-    width: 120px;
+    width: 160px;
     font-size: 15px;
     text-align: center;
     .genre{
       width: 50px;
     }
   }
+  .app-title{
+    font-size: 50px;
+  }
 
 }
+@media (max-width: 640px) {
+  td{
+    height: 50px;
+    font-size: 12px;
+  }
+}
+
 
 
 
@@ -50,6 +60,7 @@ img{
 .header__box__navi__right{
   display: flex;
   justify-content: flex-end;
+  margin: 50px 350px;
   &__mypage{
     display: block;
   width: 15%;
@@ -113,12 +124,10 @@ img{
 @media (max-width: 1040px) {
   .top-image{
     margin-top: 50px;
-    width: 100%;
   }
 .header__box__navi__right{
-  margin-top: 50px;
-  display: flex;
-  justify-content: flex-end;
+  margin: 50px 0 0 0;
+  
   &__mypage{
     display: block;
   width: 25%;

@@ -5,16 +5,11 @@ class MenusController < ApplicationController
 
   def index
     @menus = Menu.includes(:resipi_images)
-
-    
-    
   end
 
   def show
-    
   end
 
-  
   def menu_index
     if user_signed_in?
       @menus = Menu.includes(:resipi_images)
@@ -22,10 +17,7 @@ class MenusController < ApplicationController
       redirect_to "/"
       flash[:alert] = 'このページにアクセスするにはログインが必要です'
     end
-    
   end
-
-  
 
   private
   def menu_params
@@ -33,7 +25,7 @@ class MenusController < ApplicationController
   end
 
   def set_main
-    if current_user != nil
+    if user_signed_in?
       @mains = Main.where(user_id: current_user.id)
     else
       @mains = Main.all
@@ -41,7 +33,7 @@ class MenusController < ApplicationController
   end
 
   def set_sub
-    if current_user != nil
+    if user_signed_in?
       @subs = Sub.where(user_id: current_user.id)
     else
       @subs = Sub.all
@@ -49,11 +41,10 @@ class MenusController < ApplicationController
   end
 
   def set_soop
-    if current_user != nil
+    if user_signed_in?
       @soops = Soop.where(user_id: current_user.id)
     else
       @soops = Soop.all
     end
   end
-
 end

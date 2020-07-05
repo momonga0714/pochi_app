@@ -17,9 +17,9 @@
             %td 主菜
             %td 副菜
             %td 汁物
-            %th ジャンル
+            %th 種類
           %tr
-            %th 月曜日
+            %th 月
             %td
               -if @mains.blank? != true && @mains.length >= 1
                 - main_mon = @mains[rand(@mains.length)]
@@ -67,7 +67,7 @@
                 - main_mon = ""
                 = main_mon
           %tr
-            %th 火曜日
+            %th 火
             %td
               -if @mains.blank? != true && @mains.length >= 2
                 - main_tues = @mains[rand(@mains.length)]
@@ -122,7 +122,7 @@
                 - main_tues = ""
                 = main_tues
           %tr
-            %th 水曜日
+            %th 水
             %td
               -if @mains.blank? != true && @mains.length >= 3
                 - main_wed = @mains[rand(@mains.length)]
@@ -177,7 +177,7 @@
                 - main_wed = ""
                 = main_wed
           %tr
-            %th 木曜日
+            %th 木
             %td
               -if @mains.blank? != true && @mains.length >= 4
                 - main_thu = @mains[rand(@mains.length)]
@@ -232,7 +232,7 @@
                 - main_thu = ""
                 = main_thu
           %tr
-            %th 金曜日
+            %th 金
             %td
               -if @mains.blank? != true && @mains.length >=5
                 - main_fri = @mains[rand(@mains.length)]
@@ -287,7 +287,7 @@
                 - main_fri = ""
                 = main_fri
           %tr
-            %th 土曜日
+            %th 土
             %td
               -if @mains.blank? != true && @mains.length >= 6
                 - main_sat = @mains[rand(@mains.length)]
@@ -342,7 +342,7 @@
                 - main_sat = ""
                 = main_sat
           %tr
-            %th 日曜日
+            %th 日
             %td
               -if @mains.blank? != true && @mains.length >= 7
                 - main_sun = @mains[rand(@mains.length)]

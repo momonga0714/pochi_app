@@ -1,7 +1,7 @@
 FactoryBot.define do
 
   factory :sub do
-    sub_name          {"麻婆豆腐"}
+    sub_name          {Faker::Name.name}
     genre_id           {"1"}
     type_id            {"1"}
     user_id            {"1"}

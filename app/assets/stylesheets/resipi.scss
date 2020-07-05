@@ -273,19 +273,14 @@ h1{
           }
         }
         .relateds {
-          a {
-            display: block;
-            margin: 24px 0 8px;
-            color: #ff9933;
-            text-decoration: none;
-            font-weight: bold;
-            font-size: 22px;
-            position: relative;
-          }
+          padding-top: 20px;
         }
       }
     }
   }
+}
+.ingredient_row{
+  height: 20px;
 }
 
 .resipi-index{
@@ -324,3 +319,24 @@ h1{
     font-weight: 600;
      padding-top: 12px;
      }
+
+
+     @media (max-width: 670px) {
+     .main{
+      .show {
+        padding: 0px;
+        margin: 0 auto;
+        &__contents {
+          width: 100%;
+          &__content {
+            .Box {
+              padding: 24px 10px;
+              &__name {
+                font-size: 28px;
+              }
+            }
+          }
+        }
+      }
+    }
+  }

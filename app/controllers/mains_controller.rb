@@ -57,10 +57,10 @@ class MainsController < ApplicationController
 
   def update
     if @main.update(main_update_params)
-      flash[:notice] = '商品の編集が完了しました'
+      flash[:notice] = '料理の編集が完了しました'
       redirect_to "/mains/menu_index"
     else
-      flash[:alert] = '商品の編集に失敗しました'
+      flash[:alert] = '料理の編集に失敗しました'
       redirect_to "/"
     end
   end
@@ -96,7 +96,7 @@ class MainsController < ApplicationController
   end
 
   def main_update_params
-    params.require(:main).permit(:id,:sub_name,:genre_id,:type_id,:comment,:user_id,[resipi_images_attributes: [:image, :_destroy, :id]])
+    params.require(:main).permit(:id,:main_name,:genre_id,:type_id,:comment,:user_id,[resipi_images_attributes: [:image, :_destroy, :id]])
   end
 
   def set_main

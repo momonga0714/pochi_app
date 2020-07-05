@@ -1,7 +1,5 @@
 class SoopsController < ApplicationController
-
   before_action :set_soop,only:[:show,:destroy,:edit,:update]
-
 
   def index
     @soops = Soop.includes(:resipi_images)
@@ -38,7 +36,6 @@ class SoopsController < ApplicationController
       redirect_to "/"
       flash[:alert] = 'このページにアクセスするにはログインが必要です'
     end
-
   end
 
   def show
@@ -58,7 +55,6 @@ class SoopsController < ApplicationController
 
   def edit
     if user_signed_in?
-      
     else
       redirect_to "/"
       flash[:alert] = 'このページにアクセスするにはログインが必要です'
@@ -67,10 +63,10 @@ class SoopsController < ApplicationController
 
   def update
     if @soop.update(soop_update_params)
-      flash[:notice] = '商品の編集が完了しました'
-      redirect_to "/"
+      flash[:notice] = '料理の編集が完了しました'
+      redirect_to "/soops/menu_index"
     else
-      flash[:alert] = '商品の編集に失敗しました'
+      flash[:alert] = '料理の編集に失敗しました'
       redirect_to "/"
     end
   end
@@ -86,11 +82,7 @@ class SoopsController < ApplicationController
 
   def search
     @soops = Soop.search(params[:keyword]).where(user_id: current_user.id).order("created_at DESC").page(params[:page]).per(5)
-    
   end
-
-
-
 
   private
   def soops_params
@@ -98,7 +90,7 @@ class SoopsController < ApplicationController
   end
 
   def soop_update_params
-    params.require(:soop).permit(:id,:sub_name,:genre_id,:type_id,:comment,:user_id,[resipi_images_attributes: [:image, :_destroy, :id]])
+    params.require(:soop).permit(:id,:soop_name,:genre_id,:type_id,:comment,:user_id,[resipi_images_attributes: [:image, :_destroy, :id]])
   end
 
   def set_soop
