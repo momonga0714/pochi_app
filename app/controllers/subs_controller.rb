@@ -1,10 +1,6 @@
 class SubsController < ApplicationController
   before_action :set_sub,only:[:show,:destroy,:edit,:update]
 
-  # def index
-  #   @subs = Sub.includes(:resipi_images)
-  # end
-
   def new
     if user_signed_in?
       @sub = Sub.new
@@ -13,7 +9,6 @@ class SubsController < ApplicationController
       redirect_to "/"
       flash[:alert] = 'このページにアクセスするにはログインが必要です'
     end
-    
   end
 
   def create
@@ -37,9 +32,8 @@ class SubsController < ApplicationController
       redirect_to "/"
       flash[:alert] = 'このページにアクセスするにはログインが必要です'
     end
-
-    
   end
+
   def show
     if user_signed_in?
       @sub_images = @sub.resipi_images
@@ -47,7 +41,6 @@ class SubsController < ApplicationController
       redirect_to "/"
       flash[:alert] = 'このページにアクセスするにはログインが必要です'
     end
-    
   end
 
   def edit
@@ -78,19 +71,15 @@ class SubsController < ApplicationController
   def menu_index
     if user_signed_in?
       @subs = Sub.includes(:resipi_images).where(user_id: current_user.id).order("created_at DESC").page(params[:page]).per(5)
-      # @subs = Sub.includes(:resipi_images).order("created_at DESC")
     else
       redirect_to "/"
       flash[:alert] = 'このページにアクセスするにはログインが必要です'
     end
-    
   end
 
   def search
     @subs = Sub.search(params[:keyword]).where(user_id: current_user.id).order("created_at DESC").page(params[:page]).per(5)
-    # @subs = Sub.search(params[:keyword]).order("created_at DESC")
   end
-
 
   private
   def subs_params
