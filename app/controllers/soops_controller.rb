@@ -67,10 +67,10 @@ class SoopsController < ApplicationController
 
   def update
     if @soop.update(soop_update_params)
-      flash[:notice] = '商品の編集が完了しました'
+      flash[:notice] = '料理の編集が完了しました'
       redirect_to "/"
     else
-      flash[:alert] = '商品の編集に失敗しました'
+      flash[:alert] = '料理の編集に失敗しました'
       redirect_to "/"
     end
   end
@@ -98,7 +98,7 @@ class SoopsController < ApplicationController
   end
 
   def soop_update_params
-    params.require(:soop).permit(:id,:sub_name,:genre_id,:type_id,:comment,:user_id,[resipi_images_attributes: [:image, :_destroy, :id]])
+    params.require(:soop).permit(:id,:soop_name,:genre_id,:type_id,:comment,:user_id,[resipi_images_attributes: [:image, :_destroy, :id]])
   end
 
   def set_soop

@@ -61,10 +61,10 @@ class SubsController < ApplicationController
 
   def update
     if @sub.update(sub_update_params)
-      flash[:notice] = '商品の編集が完了しました'
+      flash[:notice] = '料理の編集が完了しました'
       redirect_to "/subs/menu_index"
     else
-      flash[:alert] = '商品の編集に失敗しました'
+      flash[:alert] = '料理の編集に失敗しました'
       redirect_to "/"
     end
   end
