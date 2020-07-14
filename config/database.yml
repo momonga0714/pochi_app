@@ -9,19 +9,27 @@
 # And be sure to use new-style password hashing:
 #   https://dev.mysql.com/doc/refman/5.7/en/password-hashing.html
 #
+# default: &default
+#   adapter: mysql2
+#   encoding: utf8
+#   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+#   username: root
+#   password:
+#   # socket:  /var/lib/mysql/mysql.sock  
+#   socket: /tmp/mysql.sock
+
 default: &default
   adapter: mysql2
   encoding: utf8
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
   username: root
-  # password:
-  # socket:  /var/lib/mysql/mysql.sock  
-  socket: /tmp/mysql.sock
+  password: password
+  host: db
 
 development:
   <<: *default
   database: pochi_app_development
-  socket: /var/lib/mysql/mysql.sock
+  # socket: /var/lib/mysql/mysql.sock
 
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".
