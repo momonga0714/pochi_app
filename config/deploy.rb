@@ -1,5 +1,5 @@
 # Gemfile.lockを見てcapistranoのバージョンを入れる
-lock '3.14.0'
+lock '3.14.1'
 
 # 自身のアプリ名、リポジトリ名を記述
 set :application, 'pochi_app'
