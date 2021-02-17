@@ -1,3 +1,7 @@
+- mains_resipi = @mains[rand(@mains.length)]
+- subs_resipi  = @subs[rand(@subs.length)]
+- soup_resipi  = @soops[rand(@soops.length)]
+
 .wrapper-menu
   %h1.app-title Pochi
   .header__box__navi__right
@@ -21,21 +25,21 @@
           %tr
             %th 月
             %td
-              -if @mains.blank? != true && @mains.length >= 1
-                - main_mon = @mains[rand(@mains.length)]
+              -if @mains.present? && @mains.length >= 1
+                - main_mon = mains_resipi
                 = main_mon.main_name
               - else
                 - @mains = ""
                 = @mains
             %td
-              -if @subs.blank? != true && @mains.length >= 1
-                - sub_mon = @subs[rand(@subs.length)]
-                - if main_mon.blank? != true
+              -if @subs.present? && @mains.length >= 1
+                - sub_mon = subs_resipi
+                - if main_mon.present?
                   - if main_mon.genre != sub_mon.genre
                     - i = 0
                     - while main_mon.genre != sub_mon.genre && i < 1000 do
                       - i += 1
-                      - sub_mon = @subs[rand(@subs.length)]
+                      - sub_mon = subs_resipi
                     = sub_mon.sub_name
                   - else
                     = sub_mon.sub_name
@@ -43,14 +47,14 @@
                 - @subs = ""
                 = @subs
             %td
-              - if @soops.blank? != true && @mains.length >= 1
-                - soop_mon = @soops[rand(@soops.length)]
-                - if main_mon.blank? != true
+              - if @soops.present? && @mains.length >= 1
+                - soop_mon = soup_resipi
+                - if main_mon.present?
                   - if main_mon.genre != soop_mon.genre
                     - i = 0
                     - while main_mon.genre != soop_mon.genre && i < 1000 do
                       - i += 1
-                      - soop_mon = @soops[rand(@soops.length)]
+                      - soop_mon = soup_resipi
                     = soop_mon.soop_name
                   - else
                     = soop_mon.soop_name
@@ -61,7 +65,7 @@
                 - @soops = ""
                 = @soops
             %th
-              - if main_mon.blank? != true
+              - if main_mon.present?
                 = main_mon.genre.name
               - else
                 - main_mon = ""
@@ -69,13 +73,13 @@
           %tr
             %th 火
             %td
-              -if @mains.blank? != true && @mains.length >= 2
-                - main_tues = @mains[rand(@mains.length)]
+              -if @mains.present? && @mains.length >= 2
+                - main_tues = mains_resipi
                 - if main_mon == main_tues || main_mon.genre == main_tues.genre
                   - i = 0
                   - while main_mon == main_tues || main_mon.genre == main_tues.genre && i < 1000 do
                     - i += 1
-                    - main_tues = @mains[rand(@mains.length)]
+                    - main_tues = mains_resipi
                   = main_tues.main_name
                 - else
                   = main_tues.main_name
@@ -83,14 +87,14 @@
                 - main = ""
                 = main
             %td
-              -if @subs.blank? != true && @mains.length >= 2
-                - sub_tues = @subs[rand(@subs.length)]
-                - if main_tues.blank? != true
+              -if @subs.present? && @mains.length >= 2
+                - sub_tues = subs_resipi
+                - if main_tues.present?
                   - if main_tues.genre != sub_tues.genre
                     - i = 0
                     - while main_tues.genre != sub_tues.genre && i < 1000 do
                       - i += 1
-                      - sub_tues = @subs[rand(@subs.length)]
+                      - sub_tues = subs_resipi
                     = sub_tues.sub_name
                   - else
                     = sub_tues.sub_name
@@ -98,14 +102,14 @@
                 - @subs = ""
                 = @subs
             %td
-              - if @soops.blank? != true && @mains.length >= 2
-                - soop_tues = @soops[rand(@soops.length)]
-                - if main_tues.blank? != true
+              - if @soops.present? && @mains.length >= 2
+                - soop_tues = soup_resipi
+                - if main_tues.present?
                   - if main_tues.genre != soop_tues.genre
                     - i = 0
                     - while main_tues.genre != soop_tues.genre && i < 1000 do
                       - i += 1
-                      - soop_tues = @soops[rand(@soops.length)]
+                      - soop_tues = soup_resipi
                     = soop_tues.soop_name
                   - else
                     = soop_tues.soop_name
@@ -116,7 +120,7 @@
                 - @soops = ""
                 = @soops
             %th
-              - if main_tues.blank? != true
+              - if main_tues.present?
                 = main_tues.genre.name
               - else
                 - main_tues = ""
@@ -124,13 +128,13 @@
           %tr
             %th 水
             %td
-              -if @mains.blank? != true && @mains.length >= 3
-                - main_wed = @mains[rand(@mains.length)]
+              -if @mains.present? && @mains.length >= 3
+                - main_wed = mains_resipi
                 - if main_mon == main_wed || main_tues == main_wed || main_tues.genre == main_wed.genre
                   - i = 0
                   - while main_mon == main_wed || main_tues == main_wed || main_tues.genre == main_wed.genre && i < 1000 do
                     - i += 1
-                    - main_wed = @mains[rand(@mains.length)]
+                    - main_wed = mains_resipi
                   = main_wed.main_name
                 - else
                   = main_wed.main_name
@@ -138,14 +142,14 @@
                 - main = ""
                 = main
             %td
-              -if @subs.blank? != true && @mains.length >= 3
-                - sub_wed = @subs[rand(@subs.length)]
-                - if main_wed.blank? != true
+              -if @subs.present? && @mains.length >= 3
+                - sub_wed = subs_resipi
+                - if main_wed.present?
                   - if main_wed.genre != sub_wed.genre
                     - i = 0
                     - while main_wed.genre != sub_wed.genre && i < 1000 do
                       - i += 1
-                      - sub_wed = @subs[rand(@subs.length)]
+                      - sub_wed = subs_resipi
                     = sub_wed.sub_name
                   - else
                     = sub_wed.sub_name
@@ -153,14 +157,14 @@
                 - @subs = ""
                 = @subs
             %td
-              - if @soops.blank? != true && @mains.length >= 3
-                - soop_wed = @soops[rand(@soops.length)]
-                - if main_wed.blank? != true
+              - if @soops.present? && @mains.length >= 3
+                - soop_wed = soup_resipi
+                - if main_wed.present?
                   - if main_wed.genre != soop_wed.genre
                     - i = 0
                     - while main_wed.genre != soop_wed.genre && i < 1000 do
                       - i += 1
-                      - soop_wed = @soops[rand(@soops.length)]
+                      - soop_wed = soup_resipi
                     = soop_wed.soop_name
                   - else
                     = soop_wed.soop_name
@@ -171,7 +175,7 @@
                 - @soops = ""
                 = @soops
             %th
-              - if main_wed.blank? != true
+              - if main_wed.present?
                 = main_wed.genre.name
               - else
                 - main_wed = ""
@@ -179,13 +183,13 @@
           %tr
             %th 木
             %td
-              -if @mains.blank? != true && @mains.length >= 4
-                - main_thu = @mains[rand(@mains.length)]
+              -if @mains.present? && @mains.length >= 4
+                - main_thu = mains_resipi
                 - if main_mon == main_thu || main_tues == main_thu || main_wed == main_thu || main_wed.genre == main_thu.genre
                   - i = 0
                   - while main_mon == main_thu || main_tues == main_thu || main_wed == main_thu || main_wed.genre == main_thu.genre && i < 1000 do
                     - i += 1
-                    - main_thu = @mains[rand(@mains.length)]
+                    - main_thu = mains_resipi
                   = main_thu.main_name
                 - else
                   = main_thu.main_name
@@ -193,14 +197,14 @@
                 - main = ""
                 = main
             %td
-              -if @subs.blank? != true && @mains.length >= 4
-                - sub_thu = @subs[rand(@subs.length)]
-                - if main_thu.blank? != true
+              -if @subs.present? && @mains.length >= 4
+                - sub_thu = subs_resipi
+                - if main_thu.present?
                   - if main_thu.genre != sub_thu.genre
                     - i = 0
                     - while main_thu.genre != sub_thu.genre && i < 1000 do
                       - i += 1
-                      - sub_thu = @subs[rand(@subs.length)]
+                      - sub_thu = subs_resipi
                     = sub_thu.sub_name
                   - else
                     = sub_thu.sub_name
@@ -208,14 +212,14 @@
                 - @subs = ""
                 = @subs
             %td
-              - if @soops.blank? != true && @mains.length >= 4
-                - soop_thu = @soops[rand(@soops.length)]
-                - if main_thu.blank? != true
+              - if @soops.present? && @mains.length >= 4
+                - soop_thu = soup_resipi
+                - if main_thu.present?
                   - if main_thu.genre != soop_thu.genre
                     - i = 0
                     - while main_thu.genre != soop_thu.genre && i < 1000 do
                       - i += 1
-                      - soop_thu = @soops[rand(@soops.length)]
+                      - soop_thu = soup_resipi
                     = soop_thu.soop_name
                   - else
                     = soop_thu.soop_name
@@ -226,7 +230,7 @@
                 - @soops = ""
                 = @soops
             %th
-              - if main_thu.blank? != true
+              - if main_thu.present?
                 = main_thu.genre.name
               - else
                 - main_thu = ""
@@ -234,13 +238,13 @@
           %tr
             %th 金
             %td
-              -if @mains.blank? != true && @mains.length >=5
-                - main_fri = @mains[rand(@mains.length)]
+              -if @mains.present? && @mains.length >=5
+                - main_fri = mains_resipi
                 - if main_mon == main_fri || main_tues == main_fri || main_wed == main_fri || main_thu == main_fri || main_thu.genre == main_fri.genre
                   - i = 0
                   - while main_mon == main_fri || main_tues == main_fri || main_wed == main_fri || main_thu == main_fri || main_thu.genre == main_fri.genre && i < 1000 do
                     - i += 1
-                    - main_fri = @mains[rand(@mains.length)]
+                    - main_fri = mains_resipi
                   = main_fri.main_name
                 - else
                   = main_fri.main_name
@@ -248,14 +252,14 @@
                 - main = ""
                 = main
             %td
-              -if @subs.blank? != true && @mains.length >=5
-                - sub_fri = @subs[rand(@subs.length)]
-                - if main_fri.blank? != true
+              -if @subs.present? && @mains.length >=5
+                - sub_fri = subs_resipi
+                - if main_fri.present?
                   - if main_fri.genre != sub_fri.genre
                     - i = 0
                     - while main_fri.genre != sub_fri.genre && i < 1000 do
                       - i += 1
-                      - sub_fri = @subs[rand(@subs.length)]
+                      - sub_fri = subs_resipi
                     = sub_fri.sub_name
                   - else
                     = sub_fri.sub_name
@@ -263,14 +267,14 @@
                 - @subs = ""
                 = @subs
             %td
-              - if @soops.blank? != true && @mains.length >=5
-                - soop_fri = @soops[rand(@soops.length)]
-                - if main_fri.blank? != true
+              - if @soops.present? && @mains.length >=5
+                - soop_fri = soup_resipi
+                - if main_fri.present?
                   - if main_fri.genre != soop_fri.genre
                     - i = 0
                     - while main_fri.genre != soop_fri.genre && i < 1000 do
                       - i += 1
-                      - soop_fri = @soops[rand(@soops.length)]
+                      - soop_fri = soup_resipi
                     = soop_fri.soop_name
                   - else
                     = soop_fri.soop_name
@@ -281,7 +285,7 @@
                 - @soops = ""
                 = @soops
             %th
-              - if main_fri.blank? != true
+              - if main_fri.present?
                 = main_fri.genre.name
               - else
                 - main_fri = ""
@@ -289,13 +293,13 @@
           %tr
             %th 土
             %td
-              -if @mains.blank? != true && @mains.length >= 6
-                - main_sat = @mains[rand(@mains.length)]
+              -if @mains.present? && @mains.length >= 6
+                - main_sat = mains_resipi
                 - if main_mon == main_sat || main_tues == main_sat || main_wed == main_sat || main_thu == main_sat || main_fri == main_sat || main_fri.genre == main_sat.genre
                   - i = 0
                   - while main_mon == main_sat || main_tues == main_sat || main_wed == main_sat || main_thu == main_sat || main_fri == main_sat || main_fri.genre == main_sat.genre && i < 1000 do
                     - i += 1
-                    - main_sat = @mains[rand(@mains.length)]
+                    - main_sat = mains_resipi
                   = main_sat.main_name
                 - else
                   = main_sat.main_name
@@ -303,14 +307,14 @@
                 - main = ""
                 = main
             %td
-              -if @subs.blank? != true && @mains.length >= 6
-                - sub_sat = @subs[rand(@subs.length)]
-                - if main_sat.blank? != true
+              -if @subs.present? && @mains.length >= 6
+                - sub_sat = subs_resipi
+                - if main_sat.present?
                   - if main_sat.genre != sub_sat.genre
                     - i = 0
                     - while main_sat.genre != sub_sat.genre && i < 1000 do
                       - i += 1
-                      - sub_sat = @subs[rand(@subs.length)]
+                      - sub_sat = subs_resipi
                     = sub_sat.sub_name
                   - else
                     = sub_sat.sub_name
@@ -318,14 +322,14 @@
                 - @subs = ""
                 = @subs
             %td
-              - if @soops.blank? != true && @mains.length >= 6
-                - soop_sat = @soops[rand(@soops.length)]
-                - if main_sat.blank? != true
+              - if @soops.present? && @mains.length >= 6
+                - soop_sat = soup_resipi
+                - if main_sat.present?
                   - if main_sat.genre != soop_sat.genre
                     - i = 0
                     - while main_sat.genre != soop_sat.genre && i < 1000 do
                       - i += 1
-                      - soop_sat = @soops[rand(@soops.length)]
+                      - soop_sat = soup_resipi
                     = soop_sat.soop_name
                   - else
                     = soop_sat.soop_name
@@ -336,7 +340,7 @@
                 - @soops = ""
                 = @soops
             %th
-              - if main_sat.blank? != true
+              - if main_sat.present?
                 = main_sat.genre.name
               - else
                 - main_sat = ""
@@ -344,13 +348,13 @@
           %tr
             %th 日
             %td
-              -if @mains.blank? != true && @mains.length >= 7
-                - main_sun = @mains[rand(@mains.length)]
+              -if @mains.present? && @mains.length >= 7
+                - main_sun = mains_resipi
                 - if main_mon == main_sun || main_tues == main_sun || main_wed == main_sun || main_thu == main_sun || main_fri == main_sun || main_sat == main_sun || main_sat.genre == main_sun.genre
                   - i = 0
                   - while main_mon == main_sun || main_tues == main_sun || main_wed == main_sun || main_thu == main_sun || main_fri == main_sun || main_sat == main_sun || main_sat.genre == main_sun.genre && i < 1000 do
                     - i += 1
-                    - main_sun = @mains[rand(@mains.length)]
+                    - main_sun = mains_resipi
                   = main_sun.main_name
                 - else
                   = main_sun.main_name
@@ -358,14 +362,14 @@
                 - main = ""
                 = main
             %td
-              -if @subs.blank? != true && @mains.length >= 7
-                - sub_sun = @subs[rand(@subs.length)]
-                - if main_sun.blank? != true
+              -if @subs.present? && @mains.length >= 7
+                - sub_sun = subs_resipi
+                - if main_sun.present?
                   - if main_sun.genre != sub_sun.genre
                     - i = 0
                     - while main_sun.genre != sub_sun.genre && i < 1000 do
                       - i += 1
-                      - sub_sun = @subs[rand(@subs.length)]
+                      - sub_sun = subs_resipi
                     = sub_sun.sub_name
                   - else
                     = sub_sun.sub_name
@@ -373,14 +377,14 @@
                 - @subs = ""
                 = @subs
             %td
-              - if @soops.blank? != true && @mains.length >= 7
-                - soop_sun = @soops[rand(@soops.length)]
-                - if main_sun.blank? != true
+              - if @soops.present? && @mains.length >= 7
+                - soop_sun = soup_resipi
+                - if main_sun.present?
                   - if main_sun.genre != soop_sun.genre
                     - i = 0
                     - while main_sun.genre != soop_sun.genre && i < 1000 do
                       - i += 1
-                      - soop_sun = @soops[rand(@soops.length)]
+                      - soop_sun = soup_resipi
                     = soop_sun.soop_name
                   - else
                     = soop_sun.soop_name
@@ -391,22 +395,34 @@
                 - @soops = ""
                 = @soops
             %th
-              - if main_sun.blank? != true
+              - if main_sun.present?
                 = main_sun.genre.name
               - else
                 - main_sun = ""
                 = main_sun
     - else
       = image_tag "3418554_s.jpg", size: "450x300", class: "top-image"
+  .footer-container
+    #calendar
+      %script{:src => "https://cdnjs.cloudflare.com/ajax/libs/html2canvas/0.4.1/html2canvas.js"}
+    .submit_area
+      - if user_signed_in?
+        = link_to "今週のこんだてを決める", "/",data: {"turbolinks" => false},class: "exhibitSubmit1"
+        %a#ss.exhibitSubmit2{:download => "今週のこだんて.png", :href => ""} こんだてを保存する
+        %p.arrow_box 保存する際には、2秒ほど保存ボタンに矢印を乗せ、色がオレンジになるまでお待ちください。
+        = link_to "登録した料理を確認する", "/menus/menu_index",class: "exhibitSubmit3"
+      - else
+        = link_to "今週のこんだてを決める", "/users/sign_in",class: "exhibitSubmit1"
 
-  %script{:src => "https://cdnjs.cloudflare.com/ajax/libs/html2canvas/0.4.1/html2canvas.js"}
-  .submit_area            
-    - if user_signed_in?
-      = link_to "今週のこんだてを決める", "/",data: {"turbolinks" => false},class: "exhibitSubmit1"
-      %a#ss.exhibitSubmit2{:download => "今週のこだんて.png", :href => ""} こんだてを保存する
-      %p.arrow_box 保存する際には、2秒ほど保存ボタンに矢印を乗せ、色がオレンジになるまでお待ちください。
-      = link_to "登録した料理を確認する", "/menus/menu_index",class: "exhibitSubmit3"
-    - else
-      = link_to "今週のこんだてを決める", "/users/sign_in",class: "exhibitSubmit1"
+      - if user_signed_in?
+        .exhibition-btn
+          =link_to "/mains/new", data:{"turbolinks" => false} do
+            .exhibition-btn__text
+              主菜
+          =link_to "/subs/new", data:{"turbolinks" => false} do
+            .exhibition-btn__text
+              副菜
+          =link_to "/soops/new", data:{"turbolinks" => false} do
+            .exhibition-btn__text
+              汁物
 
-  = render "layouts/footer"

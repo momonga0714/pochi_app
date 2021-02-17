@@ -4,16 +4,15 @@
     color: black;
   }
 }
-.wrapper-menu{
-  height: 53vh;
-}
 
-.wrapper-menu-index{
-  height: 75vh;
-}
 
 .screenshot{
   text-align: center;
+}
+
+.wrapper-menu{
+  margin-left: 16px;
+  margin-right: 16px;
 }
 
 @media (max-width: 1040px) {
@@ -27,3 +26,11 @@
     height: 60vh;
   }
   }
+
+.footer-container{
+  margin-left: 16px;
+  margin-right: 16px;
+}
+.submit_area{
+  margin-bottom: 40px;
+}

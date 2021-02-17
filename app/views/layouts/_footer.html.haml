@@ -27,19 +27,5 @@
         Pochiロゴ利用ガイドライン
       = link_to "#", class:"info" do
         お知らせ
-  -# =image_tag asset_path("logo-white.png"), class: "footer__logo"
   .copyright
     © Pochi
-
-- if user_signed_in?
-  .exhibition-btn
-    =link_to "/mains/new", data:{"turbolinks" => false} do
-      .exhibition-btn__text
-        主菜
-    =link_to "/subs/new", data:{"turbolinks" => false} do
-      .exhibition-btn__text
-        副菜
-    =link_to "/soops/new", data:{"turbolinks" => false} do
-      .exhibition-btn__text
-        汁物
-      

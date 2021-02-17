@@ -15,41 +15,6 @@ body{
   font-family: 'Hiragino Kaku Gothic Pro','ヒラギノ角ゴ Pro W3','メイリオ',Meiryo,'ＭＳ Ｐゴシック',sans-serif;
 
 }
-td{
-  width: 240px;
-  font-size: 15px;
-  text-align: center;
-  .genre{
-    width: 50px;
-  }
-}
-@media (max-width: 1040px) {
-  td{
-    width: 160px;
-    font-size: 15px;
-    text-align: center;
-    .genre{
-      width: 50px;
-    }
-  }
-  .app-title{
-    font-size: 50px;
-  }
-
-}
-@media (max-width: 640px) {
-  td{
-    height: 50px;
-    font-size: 12px;
-  }
-}
-
-
-
-
-
-
-
 
 img{
   display: block;
@@ -198,7 +163,12 @@ img{
 }
 
 
-
+@mixin media-btn-size(){
+  @media (max-width: 1040px) {
+    font-size: 16px;
+    width: 80%;
+  }
+}
 
 .exhibitInput{
   width: calc(100% - 51px);
@@ -213,6 +183,7 @@ img{
   color: #757575;
 }
 .exhibitSubmit1 {
+  @include media-btn-size();
   display: block;
   margin: 20px auto;
   width: 50%;
@@ -228,6 +199,7 @@ img{
   border-radius: 4px;
 }
 .exhibitSubmit2 {
+  @include media-btn-size();
   display: block;
   margin: 20px auto;
   width: 50%;
@@ -246,6 +218,7 @@ img{
 }
 
 .exhibitSubmit3{
+  @include media-btn-size();
   background-color: #7d940a;
   border: 1px solid #7d940a;
   display: block;
@@ -262,17 +235,17 @@ img{
   border-radius: 4px;
 }
 
-@media (max-width: 1040px) {
-  .exhibitSubmit1 {
-    width: 60%;
-  }
-  .exhibitSubmit2 {
-    width: 60%;
-  }
-  .exhibitSubmit3 {
-    width: 60%;
-  }
-}
+// @media (max-width: 1040px) {
+//   .exhibitSubmit1 {
+//     width: 60%;
+//   }
+//   .exhibitSubmit2 {
+//     width: 60%;
+//   }
+//   .exhibitSubmit3 {
+//     width: 60%;
+//   }
+// }
 
 
 

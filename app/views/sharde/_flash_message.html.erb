@@ -1,0 +1,15 @@
+<% if flash['notice'].present?%>
+  <div class="mdc-snackbar">
+    <div class="mdc-snackbar__surface">
+      <div class="mdc-snackbar__label"
+           role="status"
+           aria-live="polite">
+        <%= flash['notice'].try(:join) || flash['notice']%>
+      </div>
+      <div class="mdc-snackbar__actions">
+        <%== flash['notice_action'] %>
+        <button class="mdc-icon-button mdc-snackbar__dismiss material-icons-outlined text-light" title="Dismiss">close</button>
+      </div>
+    </div>
+  </div>
+<% end %>
